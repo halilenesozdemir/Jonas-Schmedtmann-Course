@@ -8,11 +8,46 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-
+  openingHours: {
+    thu: {
+        open: 12,
+        close: 22,
+    },
+    fri: {
+        open: 11,
+        close: 23,
+    },
+    sat: {
+        open: 0, // Open 24 hours
+        close: 24,
+    },
+    },
   order: function(starterIndex,mainIndex ){
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+    },
+
+    // Nice example for method ( Firstly we passed an argument obj, after that initialized neeeded key/value pair, after the destructuring we use this values nicely.)
+  orderDelivery: function({starterIndex = 1, mainIndex = 0 , time= '20:00', address}){
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
   }
+
 }
+
+// Without default values
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Height Street,22',
+  mainIndex: 2,
+  starterIndex: 2,
+})
+
+// With Default Values
+
+restaurant.orderDelivery({
+  address: 'Height Street,22',
+  mainIndex: 2,
+})
 
 //Example before 'DESTRUCTURING'
 // const arr = [2,3,4];
@@ -76,6 +111,55 @@ console.log(starter, mainCourse);
 
 const [p,q,r = 1] = [8,9]; //We can set default values for r and now see the result...
 console.log(p,q,r); // 8 9 1
+
+
+// -----------------------------Destructuring Objects------------------------------
+
+const {name, openingHours, categories} = restaurant;
+console.log(name, openingHours, categories);
+
+// What if we wanted the variable names to be different from the property names?
+const {name:restaurantName, openingHours:hours, categories: tags} = restaurant;
+// console.log(restaurantName,hours,tags);  // The result is same...
+
+//Default Values
+
+// const {menu = [], starterMenu: starters = []}= restaurant;
+// console.log(menu,starters); // -> menu(There is no menu properties in restaurant obj.) [] (4) ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad']
+
+//  const {menu, starterMenu: starters = []}= restaurant;
+//  console.log(menu,starters);
+ // If doesn't give a default empty array, you have taken 'undefined'
+
+ // Mutating Variables
+
+ let a = 111;
+ let b = 999;
+ const obj =  {a:23, b:7,c:14};
+
+//  {a,b} = obj;
+// Actually this usage seems logical. But we have an error .
+// Uncaught SyntaxError: Unexpected token '='
+// We start the curly braces and JS expects a code block. And you don't use code block 'operation of assignment!'
+
+//Let's solve this problem...
+// Just only a put a parenthesis :)
+  ({a,b} = obj);
+  console.log(a,b);
+
+  // Nested Objects
+
+    const {fri: {open,close}} =  openingHours;
+  //  console.log(open,close); // 11 23
+
+  const {fri: {open: o,close:c}} =  openingHours;
+  //  console.log(o,c); // 11 23
+
+
+
+
+
+
 
 
 
