@@ -30,6 +30,10 @@ const restaurant = {
   orderDelivery: function({starterIndex = 1, mainIndex = 0 , time= '20:00', address}){
     console.log(
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
+  },
+
+  orderPasta: function(ing1,ing2,ing3){
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
   }
 
 }
@@ -154,6 +158,91 @@ const {name:restaurantName, openingHours:hours, categories: tags} = restaurant;
 
   const {fri: {open: o,close:c}} =  openingHours;
   //  console.log(o,c); // 11 23
+
+
+
+// -----------------------------The Spread Operator(...)------------------------------
+// We use this spread operator to basically expand an array into all its elements
+// Basically unpacking all the array elements at one
+
+const arr = [7,8,9];
+const badNewArr = [1,2,arr[0],arr[1], arr[2]];
+console.log(badNewArr);
+const goodNewArr = [1,2, ...arr]
+const niceTry = [1,2,arr]
+
+console.log(goodNewArr,niceTry); // Review this results carefully.
+
+console.log(...goodNewArr);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocchi'];
+console.log(newMenu);
+
+// The big difference is that the spread operator takes all the elements from the array and it also doesn't create new variables;
+//As a consequence, we can only use it in places where we would otherwise write values seperated by commas
+
+// Copy Array
+const mainMenuCopy = [...restaurant.mainMenu];
+console.log(mainMenuCopy); // SHALLOW COPY
+
+//Join 2 Arrays;
+
+  // const arr1 = [5,6,7,'ahmet'];
+  // const arr2  =[ {x:2,y:4},1,2,3,4]
+
+  // const newArr = [...arr1,...arr2];
+  // console.log(newArr); // You see, its EZ.
+
+  // Takeaway: Spread Opearator works on all so-called 'ITERABLES'
+  //Arrays,strings,maps,sets => Iterables and NOT OBJECT...
+
+  //Strings Example-> Watch Out
+
+  const str = 'Jonas';
+  const letters = [...str, ' ', 's.'];
+  console.log(letters);
+
+  //IMPORTANT ISSUE
+  // What we CAN'T DO is to use this to build a string using a template literal;
+
+  // console.log(`${...str} Schmedtmann`); There is no waaay...
+
+  //Tysm -> Thank you so Much -> :)
+
+
+  //Real World Example
+
+//   const ingredients = [
+//     prompt('Let\'s make pasta! Ingredient 1?'),
+//     prompt('Let\'s make pasta! Ingredient 2?'),
+//     prompt('Let\'s make pasta! Ingredient 3?')
+// ]
+// console.log(ingredients);
+
+// restaurant.orderPasta(...ingredients) 
+
+// Objects (Since ES2018 although not iterable, still used.);
+
+// const newRestaurant = {...restaurant, founder: 'Guiseppe'}
+// console.log(newRestaurant);
+
+// const restaurantCopy = {...restaurant};
+// restaurantCopy.name = 'Ristorante Roma';
+// console.log(restaurantCopy.name);
+// console.log(restaurant.name);
+
+//SHALLOW COPY AND DEEP COPY matters will be investigated.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
