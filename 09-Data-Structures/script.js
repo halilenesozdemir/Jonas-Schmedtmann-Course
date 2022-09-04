@@ -44,19 +44,19 @@ const restaurant = {
 }
 
 // Without default values
-restaurant.orderDelivery({
-  time: '22:30',
-  address: 'Height Street,22',
-  mainIndex: 2,
-  starterIndex: 2,
-})
+// restaurant.orderDelivery({
+//   time: '22:30',
+//   address: 'Height Street,22',
+//   mainIndex: 2,
+//   starterIndex: 2,
+// })
 
 // With Default Values
 
-restaurant.orderDelivery({
-  address: 'Height Street,22',
-  mainIndex: 2,
-})
+// restaurant.orderDelivery({
+//   address: 'Height Street,22',
+//   mainIndex: 2,
+// })
 
 //Example before 'DESTRUCTURING'
 // const arr = [2,3,4];
@@ -74,11 +74,11 @@ restaurant.orderDelivery({
 // console.log(first,second); // Italian, Pizzeria;
 
 // How can i take first and third elements from restaurant.categories
-const [first , , third] = restaurant.categories;
-console.log(first,third); // Italian Vegetarian -> Successful -> Second element will be skipped.
+// const [first , , third] = restaurant.categories;
+// console.log(first,third); // Italian Vegetarian -> Successful -> Second element will be skipped.
 
-let [main, , secondary] = restaurant.categories;
-console.log(main,secondary);
+// let [main, , secondary] = restaurant.categories;
+// console.log(main,secondary);
 
 // How to switch main and secondary values?
 //Without destructuring 
@@ -94,14 +94,14 @@ console.log(main,secondary);
 
 // With destructuring we can make it a lot easier...
 
-[main, secondary] =  [secondary, main ]
-console.log(main,secondary);
+// [main, secondary] =  [secondary, main ]
+// console.log(main,secondary);
 
-console.log(restaurant.order(2,0));    // ['Garlic Bread', 'Pizza'];
+// console.log(restaurant.order(2,0));    // ['Garlic Bread', 'Pizza'];
 
 //Receive 2 return values from a function
-const [starter, mainCourse ] = restaurant.order(2,0);
-console.log(starter, mainCourse);
+// const [starter, mainCourse ] = restaurant.order(2,0);
+// console.log(starter, mainCourse);
 
 // Nested destructuring
 
@@ -118,17 +118,17 @@ console.log(starter, mainCourse);
 // const [p,q,r] = [8,9]; // 
 // console.log(p,q,r); // 8 9 undefined
 
-const [p,q,r = 1] = [8,9]; //We can set default values for r and now see the result...
-console.log(p,q,r); // 8 9 1
+// const [p,q,r = 1] = [8,9]; //We can set default values for r and now see the result...
+// console.log(p,q,r); // 8 9 1
 
 
 // -----------------------------Destructuring Objects------------------------------
 
-const {name, openingHours, categories} = restaurant;
-console.log(name, openingHours, categories);
+// const {name, openingHours, categories} = restaurant;
+// console.log(name, openingHours, categories);
 
 // What if we wanted the variable names to be different from the property names?
-const {name:restaurantName, openingHours:hours, categories: tags} = restaurant;
+// const {name:restaurantName, openingHours:hours, categories: tags} = restaurant;
 // console.log(restaurantName,hours,tags);  // The result is same...
 
 //Default Values
@@ -158,10 +158,10 @@ const {name:restaurantName, openingHours:hours, categories: tags} = restaurant;
 
   // Nested Objects
 
-    const {fri: {open,close}} =  openingHours;
+    // const {fri: {open,close}} =  openingHours;
   //  console.log(open,close); // 11 23
 
-  const {fri: {open: o,close:c}} =  openingHours;
+  // const {fri: {open: o,close:c}} =  openingHours;
   //  console.log(o,c); // 11 23
 
 
@@ -187,8 +187,8 @@ const {name:restaurantName, openingHours:hours, categories: tags} = restaurant;
 //As a consequence, we can only use it in places where we would otherwise write values seperated by commas
 
 // Copy Array
-const mainMenuCopy = [...restaurant.mainMenu];
-console.log(mainMenuCopy); // SHALLOW COPY
+// const mainMenuCopy = [...restaurant.mainMenu];
+// console.log(mainMenuCopy); // SHALLOW COPY
 
 //Join 2 Arrays;
 
@@ -203,9 +203,9 @@ console.log(mainMenuCopy); // SHALLOW COPY
 
   //Strings Example-> Watch Out
 
-  const str = 'Jonas';
-  const letters = [...str, ' ', 's.'];
-  console.log(letters);
+  // const str = 'Jonas';
+  // const letters = [...str, ' ', 's.'];
+  // console.log(letters);
 
   //IMPORTANT ISSUE
   // What we CAN'T DO is to use this to build a string using a template literal;
@@ -247,15 +247,15 @@ console.log(mainMenuCopy); // SHALLOW COPY
 // const arr = [1,2, ...[3, 4]] ;
 
 //REST because on LEFT side of =
-const [a,b,...others] = [1,2,3,4,5];
-console.log(a,b,others); // 1 2 (3) [3, 4, 5]
+// const [a,b,...others] = [1,2,3,4,5];
+// console.log(a,b,others); // 1 2 (3) [3, 4, 5]
 
 // REST take the rest and put them into an array :)
 
 //Both Spread and REST usage...
 
-const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
-console.log(pizza,risotto,otherFood);
+// const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(pizza,risotto,otherFood);
 //Did you see Pasta-> NO, Because we skipped that and rest operator will be placed in at the end of array...
 
 // const [pizza, , risotto, ...otherFood,bread] = [...restaurant.mainMenu, ...restaurant.starterMenu];
@@ -264,11 +264,11 @@ console.log(pizza,risotto,otherFood);
 
 // Objects
 
-const {sat, ...weekDays} = restaurant.openingHours;
-console.log(weekDays);
+// const {sat, ...weekDays} = restaurant.openingHours;
+// console.log(weekDays);
 
 // 2)Functions
-const add =  function(...numbers){
+/* const add =  function(...numbers){
   let sum = 0;
   for(let i= 0; i<numbers.length; i++){
     sum+= numbers[i]
@@ -280,42 +280,90 @@ add(5,3,7,2)
 add(8,2,5,3,2,1,4)
 
 const x = [23,5,7]
-add(...x) //Spread...
+add(...x) //Spread... */
 
-restaurant.orderPizza('mushrooms','onion','olives','Spinach') // mushrooms, (3) ['onion', 'olives', 'Spinach']
-restaurant.orderPizza('mushrooms') // mushrooms, [] => empty array...
+// restaurant.orderPizza('mushrooms','onion','olives','Spinach') // mushrooms, (3) ['onion', 'olives', 'Spinach']
+// restaurant.orderPizza('mushrooms') // mushrooms, [] => empty array...
 
 // -----------------------------SHORT CIRCUITING (&& and ||) ------------------------------
-console.log('--------OR ---------');
+// console.log('--------OR ---------');
 
 // use ANY data type, return ANY data type, short circuiting
-console.log(3 || 'Jonas'); // 3
+/* console.log(3 || 'Jonas'); // 3
 console.log('' || 'Jonas'); //Jonas ('' is falsy)
 console.log(true || 0); // true
 console.log(undefined || null); //null ( Both of them falsy and or operator return second.)
 
-console.log(undefined || 0 || '' || 'Hello' || 23 || null); // Hello;
+console.log(undefined || 0 || '' || 'Hello' || 23 || null); // Hello; */
 
 // restaurant.numGuests = 0;
 
- const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guests1);
+//  const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1);
 
-const guests2 = restaurant.numGuests || 10;
-console.log(guests2);
+// const guests2 = restaurant.numGuests || 10;
+// console.log(guests2);
 
-console.log('--------AND ---------');
+// console.log('--------AND ---------');
 
-console.log(0 && 'JONAS'); // If first element is falsy, immediately return, the second not evaluated.
-console.log(7 && 'Jonas' ); // First element is truthy, it means that the evaluation continues, and then simply return the last value.
+// console.log(0 && 'JONAS'); // If first element is falsy, immediately return, the second not evaluated.
+// console.log(7 && 'Jonas' ); // First element is truthy, it means that the evaluation continues, and then simply return the last value.
 
-console.log('Hello' && 23 && null && 'Jonas' ); // null
+// console.log('Hello' && 23 && null && 'Jonas' ); // null
 
 // if(restaurant.orderPizza){
 //   restaurant.orderPizza('mushrooms', 'spinach')
 // }
 
 // restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach') // Good solution, readable
+
+// console.log('--------Nullish Coalescing Operator ---------');
+
+//  restaurant.numGuests = 0;
+
+//  const guests = restaurant.numGuests || 10;
+//  console.log(guests);
+
+ // Nullish: Null and undefined. (NOT INCLUDE 0 OR '') -> these are truthy for this Nullish Coalescing Operator rules.
+
+//  const guestCorrect = restaurant.numGuests ?? 10;
+//  console.log(guestCorrect);
+
+ // -----------------------------Logical Assignment Operators ------------------------------
+
+  const rest1 = {
+    name: 'Capri',
+    // numGuests: 20,
+    numGuests:0
+  };
+
+ const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi'
+ };
+
+ // OR assignment opearator
+
+ //rest1.numGuests = rest1.numGuests || 10;
+ //rest2.numGuests = rest2.numGuests || 10;
+
+//  rest1.numGuests  ||= 10;
+//  rest2.numGuests  ||= 10;
+//  console.log(rest1.numGuests);
+
+// Nullish assignment operator ( null or undefined)
+
+ // İf numGuests: 0 -> Use Nullish Coalescing Op...
+  // rest1.numGuests ??= 10;
+  // console.log(rest1.numGuests);
+
+  rest2.owner &&= '<ANONYMOUS>'
+  rest1.owner &&= '<ANONYMOUS>'
+  console.log(rest1,rest2);
+
+
+
+
 
 
 
