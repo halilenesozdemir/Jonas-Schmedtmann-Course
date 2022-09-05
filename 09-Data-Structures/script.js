@@ -775,49 +775,49 @@ const game = {
 
 // -----------------------------  Maps ------------------------------
 
-const rest = new Map ();
-rest.set('name', 'Cllasico Italiano');
-rest.set(3,'Hello');
-rest.set(1,'France');
-rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
-.set('open', 11)
-.set('close',23)
-.set(true, 'We are open :)')
-.set(false, 'We are closed :(')
+// const rest = new Map ();
+// rest.set('name', 'Cllasico Italiano');
+// rest.set(3,'Hello');
+// rest.set(1,'France');
+// rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+// .set('open', 11)
+// .set('close',23)
+// .set(true, 'We are open :)')
+// .set(false, 'We are closed :(')
 // console.log(rest);
 // console.log(rest.get('name'));
 // console.log(rest.get(true));
 
-const time = 21;
-console.log(rest.get(time > rest.get('open') && time < rest.get('close')))  
+// const time = 21;
+// console.log(rest.get(time > rest.get('open') && time < rest.get('close')))  
 
-console.log(rest.has('categories'));
-rest.delete(2)
-console.log(rest);
-console.log(rest.size);
+// console.log(rest.has('categories'));
+// rest.delete(2)
+// console.log(rest);
+// console.log(rest.size);
 // rest.clear();
 // console.log(rest);
 
-rest.set([1,2], 'Test')
-console.log(rest); 
+// rest.set([1,2], 'Test')
+// console.log(rest); 
 
-console.log(rest.get([1,2])); //undefined // They are not the same object in the heap, remember Primitive vs References
+// console.log(rest.get([1,2])); //undefined // They are not the same object in the heap, remember Primitive vs References
 
-const arr = [1,3];
-rest.set(arr,'Hey');
-console.log(rest.get(arr));
+// const arr = [1,3];
+// rest.set(arr,'Hey');
+// console.log(rest.get(arr));
 
 //----------------------Maps Iteration ------------------------
 
-const question = new Map([
-  ['question', 'What is the best programmin language in the world'],
-  [1, 'C'],
-  [2,'Java'],
-  [3,'Javascript'],
-  ['correct', 3],
-  [true, 'Correct :) '],
-  [false, 'Try Again']
-])
+// const question = new Map([
+//   ['question', 'What is the best programmin language in the world'],
+//   [1, 'C'],
+//   [2,'Java'],
+//   [3,'Javascript'],
+//   ['correct', 3],
+//   [true, 'Correct :) '],
+//   [false, 'Try Again']
+// ])
 
 // console.log(question);
 
@@ -839,9 +839,100 @@ const question = new Map([
 //  console.log(question.get(question.get('correct') === answer));  
 
  //Convert Map to Array
- console.log([...question]);
- console.log([...question.keys()]);
- console.log([...question.values()]);
+//  console.log([...question]);
+//  console.log([...question.keys()]);
+//  console.log([...question.values()]);
+
+   // -----------------------------Coding Challenge #3 ------------------------------
+
+//    Your tasks:
+// 1. Create an array 'events' of the different game events that happened (no
+// duplicates)
+// 2. After the game has finished, is was found that the yellow card from minute 64
+// was unfair. So remove this event from the game events log.
+// 3. Compute and log the following string to the console: "An event happened, on
+// average, every 9 minutes" (keep in mind that a game has 90 minutes)
+// 4. Loop over 'gameEvents' and log each element to the console, marking
+// whether it's in the first half or second half (after 45 min) of the game, like this:
+// [FIRST HALF] 17:
+// ⚽
+// GOAL
+// GOOD LUCK 😀
+
+   const gameEvents = new Map([
+[17, '⚽ GOAL'],
+[36, '🔁 Substitution'],
+[47, '⚽ GOAL'],
+[61, '🔁 Substitution'],
+[64, '🔶 Yellow card'],
+[69, '🔴 Red card'],
+[70, '🔁 Substitution'],
+[72, '🔁 Substitution'],
+[76, '⚽ GOAL'],
+[80, '⚽ GOAL'],
+[92, '🔶 Yellow card'],
+]);
+
+//1 )
+ // My solution
+// const arrGameEvents = [...gameEvents.values()];
+
+// const eventUnique = [...new Set(arrGameEvents)];
+// console.log(eventUnique);
+
+// Jonas's Solution
+// const events = [...new Set(gameEvents.values())];
+// console.log(events);
+
+//2 )
+// gameEvents.delete(64);
+// console.log(gameEvents);
+
+//3 )
+
+  // const eventMin = [...gameEvents.keys()]
+  // console.log(eventMin);
+
+  // let max = eventMin[eventMin.length-1];
+  // let min = eventMin[0];
+  // let totalSpace = max-min;
+  // let avg = totalSpace / eventMin.length;
+  // console.log(avg);
+
+  //  console.log(`An event happened, on average, every  ${Math.trunc(avg)} minutes`);
+
+// Alternative Solution
+
+
+// const time = [...gameEvents.keys()].pop();
+// console.log(time);
+// console.log(`An event happened, on average, every ${Math.trunc(time / gameEvents.size)} minutes`);
+
+//4 )
+
+// const entries = [...gameEvents.entries()]
+// console.log(entries);
+
+// for(const[minute,event] of entries){
+//   if(minute< 45) console.log(`[FIRST HALF] ${minute}: ${event}`)
+//   if(minute > 45) console.log(`[SECOND HALF] ${minute}: ${event}`)
+// }
+
+//JONAS'S SOLUTION
+// for(const [min,event] of gameEvents){
+//   const half = min <45 ? 'FIRST' : 'SECOND';
+//   console.log(`[${half} HALF] ${min}: ${event}`);
+// }
+
+
+
+
+
+
+
+
+
+
 
 
 
