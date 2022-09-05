@@ -440,39 +440,39 @@ GOOD LUCK � */
 
 // 1)
 
- const [players1,players2] = game.players;
- console.log(players1,players2);
+//  const [players1,players2] = game.players;
+//  console.log(players1,players2);
 
- // 2)
+//  // 2)
 
- const [gk,...fieldPlayers] = players1;
- console.log(gk,fieldPlayers);
+//  const [gk,...fieldPlayers] = players1;
+//  console.log(gk,fieldPlayers);
 
- // 3)
+//  // 3)
 
- const allPlayers = [...players1,...players2];
- console.log(allPlayers);
+//  const allPlayers = [...players1,...players2];
+//  console.log(allPlayers);
 
- // 4)
+//  // 4)
 
- const substPlayer = ['Thiago', 'Coutinho', 'Perisic'];
- const players1Final = [...players1, ...substPlayer];
- console.log(players1Final);
+//  const substPlayer = ['Thiago', 'Coutinho', 'Perisic'];
+//  const players1Final = [...players1, ...substPlayer];
+//  console.log(players1Final);
 
- //5 )
- const {team1,x:draw,team2} = game.odds;
- console.log(team1,draw,team2);
+//  //5 )
+//  const {team1,x:draw,team2} = game.odds;
+//  console.log(team1,draw,team2);
 
- //6 )
+//  //6 )
 
- const printGoals = function(...players){
-  for(let i = 0; i <players.length; i++ ){
-    console.log(`${i+1} was scored by ${players[i]}`);
-  }
+//  const printGoals = function(...players){
+//   for(let i = 0; i <players.length; i++ ){
+//     console.log(`${i+1} was scored by ${players[i]}`);
+//   }
 
- }
- printGoals(...game.scored)
- printGoals('Davies','Müller','Kimmich', 'Lewandowski')
+//  }
+//  printGoals(...game.scored)
+//  printGoals('Davies','Müller','Kimmich', 'Lewandowski')
 
 // 7 )
 
@@ -520,6 +520,27 @@ GOOD LUCK � */
 
 
  // -----------------------------Looping Arrays: The For-of Loop ------------------------------
+
+ const menu = [...restaurant.starterMenu, ...restaurant.mainMenu]
+
+ for(const item of menu) console.log(item);
+ // For-of loops contains the 'Continue and Break' feature.
+
+ //Old school way to get index...
+
+//  for(const item of menu.entries()) {
+//   console.log(`${item[0] + 1}: ${item[1]}`);
+//  }
+
+ //Newschool style is starting;
+
+ for(const [index,menuItem] of menu.entries()){
+  console.log(`${index+1}: ${menuItem}`);
+ }
+
+//  console.log([...menu.entries()]);
+
+// ----------------------------- Enhanced Object Literals ------------------------------
   
 
 
