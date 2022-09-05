@@ -743,7 +743,7 @@ const game = {
 
 // ----------------------------- Sets ------------------------------
 
-const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto','Pizza','Pasta'])
+// const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto','Pizza','Pasta'])
 // console.log(ordersSet);
 
 // console.log(new Set('Jonas')); // Set(5) {'J', 'o', 'n', 'a', 's'}
@@ -761,16 +761,89 @@ const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto','Pizza','Pasta']
 // ordersSet.clear(); // Each of set element will be deleted.
 // console.log(ordersSet);
 
-for(const order of ordersSet) console.log(order);
+// for(const order of ordersSet) console.log(order);
 
 // Example
 
-const staff = ['Waiter','Chef','Waiter','Manager','Waiter','Chef'];
-const staffUnique = [...new Set(staff)];
-console.log(new Set(['Waiter','Chef','Waiter','Manager','Waiter','Chef']).size);
+// const staff = ['Waiter','Chef','Waiter','Manager','Waiter','Chef'];
+// const staffUnique = [...new Set(staff)];
+// console.log(new Set(['Waiter','Chef','Waiter','Manager','Waiter','Chef']).size);
 // How many unique positions there are...
 
-console.log(new Set('jonasschmedtmann').size);
+// console.log(new Set('jonasschmedtmann').size);
+
+
+// -----------------------------  Maps ------------------------------
+
+const rest = new Map ();
+rest.set('name', 'Cllasico Italiano');
+rest.set(3,'Hello');
+rest.set(1,'France');
+rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+.set('open', 11)
+.set('close',23)
+.set(true, 'We are open :)')
+.set(false, 'We are closed :(')
+// console.log(rest);
+// console.log(rest.get('name'));
+// console.log(rest.get(true));
+
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')))  
+
+console.log(rest.has('categories'));
+rest.delete(2)
+console.log(rest);
+console.log(rest.size);
+// rest.clear();
+// console.log(rest);
+
+rest.set([1,2], 'Test')
+console.log(rest); 
+
+console.log(rest.get([1,2])); //undefined // They are not the same object in the heap, remember Primitive vs References
+
+const arr = [1,3];
+rest.set(arr,'Hey');
+console.log(rest.get(arr));
+
+//----------------------Maps Iteration ------------------------
+
+const question = new Map([
+  ['question', 'What is the best programmin language in the world'],
+  [1, 'C'],
+  [2,'Java'],
+  [3,'Javascript'],
+  ['correct', 3],
+  [true, 'Correct :) '],
+  [false, 'Try Again']
+])
+
+// console.log(question);
+
+// Convert object to map
+// console.log(Object.entries(openingHours));
+// const hoursMap = new Map(Object.entries(openingHours))
+// console.log(hoursMap);
+
+// const answer = Number(prompt('Your answer'));
+// console.log(answer);
+
+// for (const [key,value] of question){
+//   if(typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+// }
+  // if(answer === 3) {console.log(question.get(true))} else {
+  //     console.log(question.get(false));
+  // }
+  //Practical Solution...
+//  console.log(question.get(question.get('correct') === answer));  
+
+ //Convert Map to Array
+ console.log([...question]);
+ console.log([...question.keys()]);
+ console.log([...question.values()]);
+
+
 
 
 
