@@ -615,85 +615,133 @@ GOOD LUCK � */
 // const values = Object.values(openingHours);
 // console.log(values);
 
-// property Entries
-const entries = Object.entries(openingHours);
-console.log(entries);
+// property Entriesconst entries = Object.entries(openingHours);
+// console.log(entries);
 
-for(const [day,{open,close}] of entries){
-  console.log(`On ${day} we open at ${open} and close at ${close}`);
+// for(const [day,{open,close}] of entries){
+//   console.log(`On ${day} we open at ${open} and close at ${close}`);
+// }
+
+
+// -----------------------------Coding Challenge #2 ------------------------------
+const game = {
+ team1: 'Bayern Munich',
+ team2: 'Borrussia Dortmund',
+ players: [
+ [
+ 'Neuer',
+ 'Pavard',
+ 'Martinez',
+ 'Alaba',
+ 'Davies',
+ 'Kimmich',
+ 'Goretzka',
+ 'Coman',
+ 'Muller',
+ 'Gnarby',
+ 'Lewandowski',
+ ],
+ [
+ 'Burki',
+ 'Schulz',
+ 'Hummels',
+ 'Akanji',
+ 'Hakimi',
+ 'Weigl',
+ 'Witsel',
+ 'Hazard',
+ 'Brandt',
+ 'Sancho',
+ 'Gotze',
+ ],
+ ],
+ score: '4:0',
+ scored: ['Lewandowski', 'Gnarby', 'Lewandowski',
+ 'Hummels'],
+ date: 'Nov 9th, 2037',
+ odds: {
+ team1: 1.33,
+ x: 3.25,
+ team2: 6.5,
+ },
+ };
+
+ //1 )
+//  console.log([...game.scored.entries()]);
+//  for(const [index,player] of game.scored.entries()){
+//   console.log(`Goal ${index +1 } : ${player}`);
+//  }
+
+ //2)
+
+//  for(const [team1,x,team2] of [Object.values(game.odds)]) console.log(team1,x,team2);
+// Unfortunately this method is doesn't support by JONAS -> Forbidden :)
+// Directly use the object itself.
+
+//  const oddValues = Object.values(game.odds)
+//  console.log(oddValues);
+
+//     let sum=0;
+//   for(let i=0;i<oddValues.length; i++){
+//   sum += oddValues[i]
+//   }
+//   console.log(sum / oddValues.length);
+
+ //3)
+
+//  const {team1,x:draw,team2} = game.odds;
+//  console.log(team1,draw,team2);
+
+//  const ratio = function(){
+//   console.log(`Odd of victory ${game.team1}: ${team1}`);
+//   console.log(`Odd of draw: ${draw} `);   
+//   console.log(`Odd of victory ${game.team2}: ${team2}`);
+//  }
+//  ratio()
+
+//4)
+
+// I didn't do this... High Level :)
+
+// const scoredEntry = game.scored.entries();
+// // console.log([...scoredEntry]);
+
+// for(let [goal,player] of scoredEntry){
+//   // console.log(goal,player);
+//   player ? goal++ : goal =1;
+//   console.log({player,goal});
+// }
+
+
+// ------------------------Jonas's Solutions ------------------
+
+// 1.
+for (const [i, player] of game.scored.entries())
+  console.log(`Goal ${i + 1}: ${player}`);
+// 2.
+const odds = Object.values(game.odds);
+let average = 0;
+for (const odd of odds) average += odd;
+average /= odds.length;
+console.log(average);
+// 3.
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr} ${odd}`);
 }
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Odd of victory Bayern Munich: 1.33
+// Odd of draw: 3.25
+// Odd of victory Borrussia Dortmund: 6.5
+// BONUS
+// So the solution is to loop over the array, and add the array elements as object properties, and then increase the count as we encounter a new occurence of a certain element
+const scorers = {};
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
+///////////////////////////////////////
+
+
+// ----------------------------- Sets ------------------------------
 
 
 
