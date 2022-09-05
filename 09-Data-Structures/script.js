@@ -402,47 +402,47 @@ GOOD LUCK � */
 
 
 
-  const game = {
- team1: 'Bayern Munich',
- team2: 'Borrussia Dortmund',
- players: [
- [
- 'Neuer',
- 'Pavard',
- 'Martinez',
- 'Alaba',
- 'Davies',
- 'Kimmich',
- 'Goretzka',
- 'Coman',
- 'Muller',
- 'Gnarby',
- 'Lewandowski',
- ],
- [
- 'Burki',
- 'Schulz',
- 'Hummels',
- 'Akanji',
- 'Hakimi',
- 'Weigl',
- 'Witsel',
- 'Hazard',
- 'Brandt',
- 'Sancho',
- 'Gotze',
- ],
- ],
- score: '4:0',
- scored: ['Lewandowski', 'Gnarby', 'Lewandowski',
- 'Hummels'],
- date: 'Nov 9th, 2037',
- odds: {
- team1: 2,
- x: 3.25,
- team2: 1,
- },
- };
+//   const game = {
+//  team1: 'Bayern Munich',
+//  team2: 'Borrussia Dortmund',
+//  players: [
+//  [
+//  'Neuer',
+//  'Pavard',
+//  'Martinez',
+//  'Alaba',
+//  'Davies',
+//  'Kimmich',
+//  'Goretzka',
+//  'Coman',
+//  'Muller',
+//  'Gnarby',
+//  'Lewandowski',
+//  ],
+//  [
+//  'Burki',
+//  'Schulz',
+//  'Hummels',
+//  'Akanji',
+//  'Hakimi',
+//  'Weigl',
+//  'Witsel',
+//  'Hazard',
+//  'Brandt',
+//  'Sancho',
+//  'Gotze',
+//  ],
+//  ],
+//  score: '4:0',
+//  scored: ['Lewandowski', 'Gnarby', 'Lewandowski',
+//  'Hummels'],
+//  date: 'Nov 9th, 2037',
+//  odds: {
+//  team1: 2,
+//  x: 3.25,
+//  team2: 1,
+//  },
+//  };
 
 
               // --------------------------My Solution----------------------------
@@ -530,9 +530,9 @@ GOOD LUCK � */
 
  // -----------------------------Looping Arrays: The For-of Loop ------------------------------
 
- const menu = [...restaurant.starterMenu, ...restaurant.mainMenu]
+//  const menu = [...restaurant.starterMenu, ...restaurant.mainMenu]
 
- for(const item of menu) console.log(item);
+//  for(const item of menu) console.log(item);
  // For-of loops contains the 'Continue and Break' feature.
 
  //Old school way to get index...
@@ -543,13 +543,69 @@ GOOD LUCK � */
 
  //Newschool style is starting;
 
- for(const [index,menuItem] of menu.entries()){
-  console.log(`${index+1}: ${menuItem}`);
- }
+//  for(const [index,menuItem] of menu.entries()){
+//   console.log(`${index+1}: ${menuItem}`);
+//  }
 
 //  console.log([...menu.entries()]);
 
-// ----------------------------- Enhanced Object Literals ------------------------------
+// ----------------------------- Optional Chaining ------------------------------
+
+// if(restaurant.openingHours.mon){
+// console.log(restaurant.openingHours.mon.open);
+// }
+
+// if(restaurant.openingHours && restaurant.openingHours.fri){
+// console.log(restaurant.openingHours.fri.open);
+// }
+
+
+//Without Optional Chaining
+// console.log(restaurant.openingHours.mon.open); //undefined.open -> return  Uncaught TypeError 
+
+//With Optional Chaining
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+// Example
+const days = ['mon','tue', 'wed','thu','fri','sat','sun']
+for(const day of days){
+  console.log(day);
+ const open =  restaurant.openingHours[day]?.open ?? 'closed'
+ console.log(`On ${day}, we open at ${open}`);
+}
+
+//Methods
+console.log(restaurant.order?.(0,1) ?? 'method does not exist');
+console.log(restaurant.orderRisotto?.(0,1) ?? 'method does not exist');
+
+//Arrays
+const users = [
+  // {
+  // name:'Jonas',
+  // email: 'hello@jonas.io'
+  // },
+]
+
+// Which one is easy. Choose your selection :) This one?
+console.log(users[0]?.name ?? 'User array empty');
+
+//Or this one?
+if(users.length > 0) console.log(console.log(users[0]?.name ?? 'User array empty'));
+else console.log('user array empty')
+
+//Of course first one is so sweety...
+
+
+// ----------------------------- Looping Objects: Object Keys,Values,Entries ------------------------------
+
+
+
+
+
+
+
+
 
 
   
