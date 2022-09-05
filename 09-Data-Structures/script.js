@@ -564,40 +564,65 @@ GOOD LUCK � */
 // console.log(restaurant.openingHours.mon.open); //undefined.open -> return  Uncaught TypeError 
 
 //With Optional Chaining
-console.log(restaurant.openingHours.mon?.open);
-console.log(restaurant.openingHours?.mon?.open);
+// console.log(restaurant.openingHours.mon?.open);
+// console.log(restaurant.openingHours?.mon?.open);
 
 // Example
-const days = ['mon','tue', 'wed','thu','fri','sat','sun']
-for(const day of days){
-  console.log(day);
- const open =  restaurant.openingHours[day]?.open ?? 'closed'
- console.log(`On ${day}, we open at ${open}`);
-}
+// const days = ['mon','tue', 'wed','thu','fri','sat','sun']
+// for(const day of days){
+//   console.log(day);
+//  const open =  restaurant.openingHours[day]?.open ?? 'closed'
+//  console.log(`On ${day}, we open at ${open}`);
+// }
 
-//Methods
-console.log(restaurant.order?.(0,1) ?? 'method does not exist');
-console.log(restaurant.orderRisotto?.(0,1) ?? 'method does not exist');
+// //Methods
+// console.log(restaurant.order?.(0,1) ?? 'method does not exist');
+// console.log(restaurant.orderRisotto?.(0,1) ?? 'method does not exist');
 
 //Arrays
-const users = [
-  // {
-  // name:'Jonas',
-  // email: 'hello@jonas.io'
-  // },
-]
+// const users = [
+//   // {
+//   // name:'Jonas',
+//   // email: 'hello@jonas.io'
+//   // },
+// ]
 
 // Which one is easy. Choose your selection :) This one?
-console.log(users[0]?.name ?? 'User array empty');
+// console.log(users[0]?.name ?? 'User array empty');
 
-//Or this one?
-if(users.length > 0) console.log(console.log(users[0]?.name ?? 'User array empty'));
-else console.log('user array empty')
+// //Or this one?
+// if(users.length > 0) console.log(console.log(users[0]?.name ?? 'User array empty'));
+// else console.log('user array empty')
 
 //Of course first one is so sweety...
 
 
-// ----------------------------- Looping Objects: Object Keys,Values,Entries ------------------------------
+// -------------------- Looping Objects: Object Keys,Values,Entries ---------------------
+
+//property NAMES
+
+// const properties = Object.keys(openingHours);
+// console.log(properties);
+
+// let openStr = `We are open on ${properties.length} days: `;
+
+//   for(const day of properties){
+//     openStr += `${day},`
+//   }
+  // console.log(openStr);
+
+// property VALUES
+// const values = Object.values(openingHours);
+// console.log(values);
+
+// property Entries
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for(const [day,{open,close}] of entries){
+  console.log(`On ${day} we open at ${open} and close at ${close}`);
+}
+
 
 
 
