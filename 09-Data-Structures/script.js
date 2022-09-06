@@ -1059,6 +1059,116 @@ classFinder(cars[3]); //SuperSport */
 
   // -----------------------------Working with strings Part 3 ------------------------------
 
+  //Split and join
+  // console.log('a+very+nice+string'.split('+'))
+  // console.log('Jonas Schmedtmann'.split(' '))
+
+  // const[firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+  // console.log(firstName,lastName);
+  // const newChar = `Mr. ${firstName} ${lastName.toUpperCase()}`
+  // console.log(newChar);
+
+//  const newName =  ['Mr.', firstName , lastName.toUpperCase()].join(' ')
+//  console.log(newName);
+
+//My Solution (ı learn charAt btw...))
+
+// const str = 'jessica ann smith davis';
+// const arr = str.split(' ');
+// console.log(arr);
+
+// for(let i = 0; i<arr.length;i++){
+//   arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+
+// }
+//   console.log(arr);
+
+// const str2 = arr.join(' ')
+// console.log(str2); // Jessica Ann Smith Davis
+
+//Jonas's Solution
+
+
+
+// const capitalizeName = function(name){
+//   const names = name.split(' ');
+//   const namesUpper = []
+
+//   for(const n of names){
+//     namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//   }
+//   console.log(namesUpper.join(' '));
+// }
+
+// capitalizeName('jessica ann smith davis')
+// capitalizeName('jonas schmedtmann')
+
+//Small Challenge - Way 2
+
+// const capitalizeName = function(name){
+//   const names = name.split(' ');
+//   const namesUpper = []
+
+//   for(const n of names){
+//     namesUpper.push(n.replace(n[0],n[0].toUpperCase()));
+//   }
+//   console.log(namesUpper.join(' '));
+// }
+
+// capitalizeName('jessica ann smith davis')
+// capitalizeName('jonas schmedtmann')
+
+// Padding
+// const message = 'Go to gate 23!';
+// console.log(message.padStart(20,'+').padEnd(30,'+'));
+// console.log('Jonas'.padStart(20,'+').padEnd(30,'+'));
+
+// My maskedNumber Solution
+
+/* const creditCard = function(number){
+    const str = number + '';
+  const lastDigits = str.slice(-4)
+
+  const maskedNumber = lastDigits.padStart(str.length, '*')
+  console.log(maskedNumber);
+}
+
+
+  creditCard(124121211411425);
+  creditCard(1211414046); */
+
+  // Jonas's Solution
+
+  // const maskCreditCard = function(number){
+  //   const str = number + '';;
+  //   const last = str.slice(-4);
+
+  //   return last.padStart(str.length,'*');
+
+  // }
+
+  // console.log(maskCreditCard(24674539815115511512n)); 
+  // console.log(maskCreditCard('1241567226'));       
+
+  // Repeat 
+  // const message2 = 'Bad Weather... All Departures delayed...  ';
+  // console.log(message2.repeat(5));
+
+  // const planesInLine = function(n){
+  //   console.log(`There are ${n} planes in line ${'✈'.repeat(n)}`);
+  // }
+  // planesInLine(5)
+  // planesInLine(3)
+  // planesInLine(12)
+
+    // ----------------------------- Coding Challenge #4  ------------------------------
+
+  
+
+
+
+
+
 
 
 
