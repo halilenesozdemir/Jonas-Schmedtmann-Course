@@ -980,7 +980,7 @@ const game = {
 
   // Another Example
 
-  const cars = ['Mercedes-D', 'Renault-B', 'BMW-D', 'McLaren-S'];
+/*   const cars = ['Mercedes-D', 'Renault-B', 'BMW-D', 'McLaren-S'];
  
 for (let i = 0; i < cars.length; i++) {
   console.log(cars[i].slice(0, -2));
@@ -999,9 +999,71 @@ function classFinder(car) {
  
 classFinder(cars[0]); //Luxury
 classFinder(cars[1]); //Family Car
-classFinder(cars[3]); //SuperSport
+classFinder(cars[3]); //SuperSport */
 
   // -----------------------------Working with strings Part 2 ------------------------------
+
+
+//  const airline = 'Tap Air Portugal';
+
+//  console.log(airline.toLowerCase());
+//  console.log(airline.toUpperCase());
+
+ // Fix capitalization in name
+//  const passenger = 'jONaS'; // Jonas
+//  const passengerLower = passenger.toLowerCase();
+//  const passengerCorrect = passenger[0].toUpperCase() + passengerLower.slice(1);
+//  console.log(passengerCorrect);
+
+//  const passengerTrue = 
+
+//Comparing emails
+// const email = 'hello@jonas.io';
+// const loginEmail =  '        Hello@Jonas.Io \n '
+
+// const fixedEmail = loginEmail.toLowerCase().trim();
+// console.log(fixedEmail === email);
+
+//replacing
+// const priceGB = '288,97&';
+// const priceUS = priceGB.replace('&','$').replace(',','.')
+// console.log(priceUS);
+
+// const announcement = 'All passengers come to boarding door 23. Boarding door 23!'
+
+// console.log(announcement.replaceAll('door', 'gate'));
+
+// Another solution with Regular Expression
+// console.log(announcement.replace(/door/g, 'gate')); //-g flag is meant to be 'GLOBAL'
+
+//Booleans
+// const plane = 'Airbus A320neo';
+// console.log(plane.includes('A320'));
+// console.log(plane.includes('Boeing'));
+// console.log(plane.startsWith('Air'));
+
+// if(plane.startsWith('Airbus') && plane.endsWith('neo')) console.log('New model of airbus')
+// else console.log(':(');
+
+// Practice Exercise
+
+// const checkBaggage = function(items){
+// const lower = items.toLowerCase();
+// if(lower.includes('gun') || lower.includes('knife')) console.log('You are NOT allowed on board'); 
+// else console.log('Welcome aboard!');
+// }
+
+// checkBaggage('I have a laptop, some foof and a pocket of KniFe')
+// checkBaggage('Socks and camera')
+// checkBaggage('Got some snacks and a GUN for Protection')
+
+  // -----------------------------Working with strings Part 3 ------------------------------
+
+
+
+
+
+
 
 
 
