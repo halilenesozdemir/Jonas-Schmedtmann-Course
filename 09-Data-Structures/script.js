@@ -925,6 +925,89 @@ const game = {
 // }
 
 
+  // -----------------------------Working with strings Part 1 ------------------------------
+
+  // const airline = 'Tap Air Portugal';
+  // const plane = 'A320';
+
+  // console.log(plane[0]);
+  // console.log(plane[1]);
+  // console.log(plane[2]);
+  // console.log('B737'[0]);
+
+  // console.log(airline.length);
+  // console.log('B737'.length);
+
+  // console.log(airline.indexOf('r'));
+  // console.log(airline.lastIndexOf('r'));
+  // console.log(airline.lastIndexOf('Portugal'));
+
+  // Slice method always return the new string. Hence we stored this result in variable...
+  // console.log(airline.slice(4));
+  // console.log(airline.slice(4,7)); // 7-4 ==> length of letter
+
+  // console.log(airline.slice(0,airline.indexOf(' ')));
+  // console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+  // console.log(airline.slice(-2));
+  // console.log(airline.slice(1, -1));
+  // console.log(airline.slice(-2));
+
+  // const checkMiddleSeat = function(seat){
+    // if(seat.includes('B') || seat.includes('E') ){
+    //   console.log('You are into the middle');
+    // } else  {
+    //   console.log('You\'re lucky');
+    // }
+  //   const s = seat.slice(-1);
+  //   if(s === 'B' || s === 'E')
+  //     console.log('You are into the middle');
+  //    else 
+  //     console.log('You\'re Lucky');
+
+
+  // }
+
+  // checkMiddleSeat('11B')
+  // checkMiddleSeat('17E')
+  // checkMiddleSeat('142C')
+  // checkMiddleSeat('15A')
+
+  // console.log(new String('jonas'));
+  // console.log(typeof new String('jonas'));
+
+  //   console.log(typeof new String('jonas').slice(1));
+
+  // Another Example
+
+  const cars = ['Mercedes-D', 'Renault-B', 'BMW-D', 'McLaren-S'];
+ 
+for (let i = 0; i < cars.length; i++) {
+  console.log(cars[i].slice(0, -2));
+} // I put '-ClassNumber' to categorise Cars. But I don't wanna show them to customers. So I can use for loop and string slice method on them to trim category part.
+ 
+function classFinder(car) {
+  const carClass = car.slice(-1);
+  if (carClass === 'B') {
+    console.log('Family Car');
+  } else if (carClass === 'D') {
+    console.log('Luxury');
+  } else if (carClass === 'S') {
+    console.log('SuperSport');
+  }
+} // Extracting the last letter from strings to see cars classes. 
+ 
+classFinder(cars[0]); //Luxury
+classFinder(cars[1]); //Family Car
+classFinder(cars[3]); //SuperSport
+
+  // -----------------------------Working with strings Part 2 ------------------------------
+
+
+
+
+  
+
 
 
 
