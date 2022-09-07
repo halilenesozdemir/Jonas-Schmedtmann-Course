@@ -152,37 +152,37 @@ Or return other functions.
 
 // -------------------------- Functions Accepting Callback Functions -----------------
 
-const oneWord = function (str) {
-  return str.replace(/ /g, '').toLowerCase();
-};
+// const oneWord = function (str) {
+//   return str.replace(/ /g, '').toLowerCase();
+// };
 
 // Useful article: https://stackoverflow.com/questions/1206911/why-do-i-need-to-add-g-when-using-string-replace-in-javascript#:~:text=The%20%22g%22%20that%20you%20are,the%20replacement%20string%20you%20provide.
 // Toggle of word wrap shortcut => ALT + Z
 
-const upperFirstWord = function (str) {
-  const [first, ...others] = str.split(' ');
-  return [first.toUpperCase(), ...others].join(' ');
-};
+// const upperFirstWord = function (str) {
+//   const [first, ...others] = str.split(' ');
+//   return [first.toUpperCase(), ...others].join(' ');
+// };
 
 // Higher-order Function
-const transformer = function (str, fn) {
-  console.log(`Original String: ${str}`);
-  console.log(`Transformed string: ${fn(str)}`);
+// const transformer = function (str, fn) {
+//   console.log(`Original String: ${str}`);
+//   console.log(`Transformed string: ${fn(str)}`);
 
-  console.log(`Transformed by: ${fn.name}`); // name can be used in functions...
-};
+//   console.log(`Transformed by: ${fn.name}`); // name can be used in functions...
+// };
 
-transformer('Javascript is the best!', upperFirstWord);
-transformer('Javascript is the best!', oneWord);
+// transformer('Javascript is the best!', upperFirstWord);
+// transformer('Javascript is the best!', oneWord);
 
 // JS uses callbacks all the time
-const highFive = function () {
-  console.log('🖐');
-};
+// const highFive = function () {
+//   console.log('🖐');
+// };
 // document.body.addEventListener('click', highFive)
 // highFive is a callback function, addEventListener is 'Higher-order Function'
 
-['Jonas', 'Martha', 'Adam'].forEach(highFive);
+// ['Jonas', 'Martha', 'Adam'].forEach(highFive);
 
 // -------------------------- Functions Returning Functions-----------------
 
@@ -200,3 +200,57 @@ const highFive = function () {
 
 // const greet = (greeting) => (name) => console.log(`${greeting} ${name}`);
 // greet('Hello')('Halil');
+
+// -------------------------- The call and apply Methods-----------------
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  // book: function(){}
+  book(flightNum, name) {
+    console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
+
+lufthansa.book(239, 'Jonas Wright');
+lufthansa.book(41, 'Enes Ozdemir');
+console.log(lufthansa);
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+// Call Method
+const book = lufthansa.book;
+
+// Does NOT WORK
+// book(23, 'Sarah Williams');
+
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log(lufthansa);
+
+const swiss = {
+  airline: 'Swiss Airlines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+book.call(swiss, 25, 'Ahmet Mahmuti');
+// console.log(swiss);
+
+// Apply Method
+const flightData = [582123123, 'George Cooper'];
+
+// book.call(swiss, ...flightData); = book.apply(swiss, flightData);
+//---Don't prefer the APPLY...
+// WE PREFER THE CALL METHOD, If we have an array -> use Spread Operator.
+
+book.call(swiss, ...flightData);
+console.log(swiss);
