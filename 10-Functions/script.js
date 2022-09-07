@@ -3,10 +3,10 @@
 // const bookings = [];
 
 // const createBooking = function(flightNum, numPassengers=2, price = 200 *numPassengers){
-    //Parametrelerin verilme sırası cidden mühim bir mesele,yukarıdaki parametrelerde numPassengeri sonradan tanımlamak istersen before access init. hatası alacaksın.
-    //ES5
-    // numPassengers = numPassengers  || 1;
-    // price  = price || 199;
+//Parametrelerin verilme sırası cidden mühim bir mesele,yukarıdaki parametrelerde numPassengeri sonradan tanımlamak istersen before access init. hatası alacaksın.
+//ES5
+// numPassengers = numPassengers  || 1;
+// price  = price || 199;
 
 //     const booking = {
 //         flightNum,
@@ -27,22 +27,22 @@
 
 // -------------------------- How Passing Arguments Works: Value vs Reference -----------------
 
-const flight = 'LH234';
-const jonas = {
-    name: 'Jonas Schmedtmann',
-    passport: 1241141421412
-}
+// const flight = 'LH234';
+// const jonas = {
+//     name: 'Jonas Schmedtmann',
+//     passport: 1241141421412
+// }
 
-const checkIn = function(flightNum,passenger){
-flightNum = 'LH999';
-passenger.name = 'Mr.' + passenger.name;
+// const checkIn = function(flightNum,passenger){
+// flightNum = 'LH999';
+// passenger.name = 'Mr.' + passenger.name;
 
-if(passenger.passport === 1241141421412 ){
-    alert('Check in')
-} else {
-    alert('Wrong passport!')
-}
-}
+// if(passenger.passport === 1241141421412 ){
+//     alert('Check in')
+// } else {
+//     alert('Wrong passport!')
+// }
+// }
 
 // checkIn(flight,jonas) // flight= Primitive Type (Just a string)
 // console.log(flight);
@@ -50,19 +50,19 @@ if(passenger.passport === 1241141421412 ){
 
 //Is the same as doing...
 
-const flightNum = flight 
+// const flightNum = flight
 // -> Simple Copy, flightNum isn't an original...
-const passenger = jonas
+// const passenger = jonas
 // Just like copying object...
 // Whatever we change in a copy, will also happen in the original.
 
-const newPassport = function(person){
-    person.passport = Math.trunc(Math.random() * 1000000000);
-}
+// const newPassport = function(person){
+//     person.passport = Math.trunc(Math.random() * 1000000000);
+// }
 
-newPassport(jonas)
-console.log(jonas);
-checkIn(flight,jonas)
+// newPassport(jonas)
+// console.log(jonas);
+// checkIn(flight,jonas)
 
 // PBV- PBR issue article
 //https://levelup.gitconnected.com/pass-by-value-vs-pass-by-reference-in-javascript-82fa8736c9f7
@@ -136,7 +136,52 @@ The identifier obj for our object obj, still points at the address 0003, which s
 That turned out to be quite the essay. I don't know if this brings you any clarity on the issue. But I sure hope so.
 */
 
+// -------------------------- First Class and Higher-Order Functions-----------------
 
+// Ctrl + End combination -> Go to end of file
+// Ctrl + Home combination -> Go to beginning of file
 
+// Article: https://dmitripavlutin.com/javascript-higher-order-functions/
 
+/* 
+First Class Functions - Theoretical concept that all functions are treated as values
 
+Higher Order Functions - functions that receive and activate other functions.
+Or return other functions.
+*/
+
+// -------------------------- Functions Accepting Callback Functions -----------------
+
+const oneWord = function (str) {
+  return str.replace(/ /g, '').toLowerCase();
+};
+
+// Useful article: https://stackoverflow.com/questions/1206911/why-do-i-need-to-add-g-when-using-string-replace-in-javascript#:~:text=The%20%22g%22%20that%20you%20are,the%20replacement%20string%20you%20provide.
+// Toggle of word wrap shortcut => ALT + Z
+
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
+
+// Higher-order Function
+const transformer = function (str, fn) {
+  console.log(`Original String: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+
+  console.log(`Transformed by: ${fn.name}`); // name can be used in functions...
+};
+
+transformer('Javascript is the best!', upperFirstWord);
+transformer('Javascript is the best!', oneWord);
+
+// JS uses callbacks all the time
+const highFive = function () {
+  console.log('🖐');
+};
+// document.body.addEventListener('click', highFive)
+// highFive is a callback function, addEventListener is 'Higher-order Function'
+
+['Jonas', 'Martha', 'Adam'].forEach(highFive);
+
+// -------------------------- Functions Returning Functions-----------------
