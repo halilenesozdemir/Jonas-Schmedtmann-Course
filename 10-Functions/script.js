@@ -185,3 +185,18 @@ const highFive = function () {
 ['Jonas', 'Martha', 'Adam'].forEach(highFive);
 
 // -------------------------- Functions Returning Functions-----------------
+
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+
+// const greeterHey = greet('Hey');
+// greeterHey('Jonas');
+// greeterHey('Steven');
+
+// greet('Hello')('Geir');
+
+// const greet = (greeting) => (name) => console.log(`${greeting} ${name}`);
+// greet('Hello')('Halil');
