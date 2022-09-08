@@ -150,6 +150,38 @@ Higher Order Functions - functions that receive and activate other functions.
 Or return other functions.
 */
 
+// JS KARMAŞASI ARİN YAZILIM-> Tekrar...
+// Parametre vs Argüman farkı ->
+//  Parametre fonksiyonu oluştururken, argüman ise invoke ederken(çalıştırken ) kullanılır.
+
+//First Class Functions
+
+// const square = function (num) {
+//   return num * num;
+// };
+
+// const myArr = [
+//   6,'Arin',function () {console.log('Array Element');}]
+
+//   myArr[2]();
+
+//   const myObj = {
+//     age:5,
+//     name: 'Arin',
+//     func(){console.log('Object Element');}
+//   }
+//   myObj.func();
+
+//   console.log(20 + (function(){return 10;})() ); // IIFE
+
+
+
+// const square = function (num) {
+//   return num * num;
+// };
+// Function Expression is not Hoisted...
+//DK 26
+
 // -------------------------- Functions Accepting Callback Functions -----------------
 
 // const oneWord = function (str) {
@@ -203,54 +235,116 @@ Or return other functions.
 
 // -------------------------- The call and apply Methods-----------------
 
-const lufthansa = {
-  airline: 'Lufthansa',
-  iataCode: 'LH',
-  bookings: [],
-  // book: function(){}
-  book(flightNum, name) {
-    console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
-    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
-  },
-};
+// const lufthansa = {
+//   airline: 'Lufthansa',
+//   iataCode: 'LH',
+//   bookings: [],
+//   //  book: function(){}
+//   book(flightNum, name) {
+//     console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+//     this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+//   },
+// };
 
-lufthansa.book(239, 'Jonas Wright');
-lufthansa.book(41, 'Enes Ozdemir');
-console.log(lufthansa);
+// lufthansa.book(239, 'Jonas Wright');
+// lufthansa.book(41, 'Enes Ozdemir');
+// console.log(lufthansa);
 
-const eurowings = {
-  airline: 'Eurowings',
-  iataCode: 'EW',
-  bookings: [],
-};
+// const eurowings = {
+//   airline: 'Eurowings',
+//   iataCode: 'EW',
+//   bookings: [],
+//   bookEW(flightNum,name){
+//     console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode} ${flightNum}`);
+//     this.bookings.push({flight: `${this.iataCode}${flightNum}`, name})
+//   }
+// };
+
+// eurowings.bookEW(23,'Halil')
 
 // Call Method
-const book = lufthansa.book;
+// const book = lufthansa.book;
 
 // Does NOT WORK
 // book(23, 'Sarah Williams');
 
-book.call(eurowings, 23, 'Sarah Williams');
-console.log(eurowings);
+// book.call(eurowings, 23, 'Sarah Williams');
+// console.log(eurowings);
 
-book.call(lufthansa, 239, 'Mary Cooper');
-console.log(lufthansa);
+// book.call(lufthansa, 239, 'Mary Cooper');
+// console.log(lufthansa);
 
-const swiss = {
-  airline: 'Swiss Airlines',
-  iataCode: 'LX',
-  bookings: [],
-};
+// const swiss = {
+//   airline: 'Swiss Airlines',
+//   iataCode: 'LX',
+//   bookings: [],
+//   bookLX: function(flightNum,name){
+//     console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode} ${flightNum}`);
+//     this.bookings.push({flight: `${this.iataCode}${flightNum}`, name})
+//   }
+// };
 
-book.call(swiss, 25, 'Ahmet Mahmuti');
+// swiss.bookLX(1241,'Ahmet Mercan')
+
+// book.call(swiss, 25, 'Ahmet Mahmuti');
 // console.log(swiss);
 
 // Apply Method
-const flightData = [582123123, 'George Cooper'];
+// const flightData = [582123123, 'George Cooper'];
 
-// book.call(swiss, ...flightData); = book.apply(swiss, flightData);
-//---Don't prefer the APPLY...
+// book.call(swiss, ...flightData) =(aynı mantık) book.apply(swiss, flightData);
+// ---Don't prefer the APPLY...
 // WE PREFER THE CALL METHOD, If we have an array -> use Spread Operator.
 
-book.call(swiss, ...flightData);
-console.log(swiss);
+// book.call(swiss, ...flightData);
+// console.log(swiss);
+
+// -------------------------- The bind Method -----------------
+
+// const bookEW = book.bind(eurowings);
+// const bookLH = book.bind(lufthansa);
+// const bookLX =book.bind(swiss)
+// bookLH(544,'Halil Enes')
+
+// const bookEW23 =book.bind(eurowings,23);
+// bookEW23('Ahmet')
+// bookEW23('Jonas Schmedtmann')
+// console.log(bookEW);
+
+// With Event Listeners;
+// lufthansa.planes = 300;
+// lufthansa.buyPlane = function (){
+//   console.log(this);
+//   this.planes++
+//   console.log(this.planes);
+// }
+// lufthansa.buyPlane()
+
+// document.querySelector('.buy').addEventListener('click',lufthansa.buyPlane.bind(lufthansa));
+
+// Partial Applicaton
+
+// const addTax = (rate, value) => value + value * rate;
+// console.log(addTax(0.1,200));
+
+// const addVAT = addTax.bind(null, 0.23);
+// // addVat = value => value + value * 0.23;
+// console.log(addVAT(23));
+// console.log(addVAT(100));
+
+// With Functions returning function method (No bind)
+
+// const addTaxRate = function(rate) {
+//   return function(value){
+//     return (`${value + value * rate}`);
+//   }
+// }
+
+// const specifyRate = addTaxRate(0.1);
+// console.log(specifyRate(100));
+// console.log(specifyRate(23));
+
+
+
+
+
