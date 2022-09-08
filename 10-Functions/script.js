@@ -180,7 +180,6 @@ Or return other functions.
 //   return num * num;
 // };
 // Function Expression is not Hoisted...
-//DK 26
 
 // -------------------------- Functions Accepting Callback Functions -----------------
 
@@ -465,6 +464,41 @@ Hints: Use many of the tools you learned about in this and the last section 😉
 // poll.displayResults.call({answers:[1, 5, 3, 9, 6, 1] }, 'string')
 // [5, 2, 3]
 // [1, 5, 3, 9, 6, 1]
+
+
+  // -------------------------- Immediately Invoked Function Expressions(IIFE) -----------------
+
+  const runOnce = function(){
+    console.log('This will never run again');
+  };
+  runOnce();
+
+  // IIFE
+//  (function(){
+//     console.log('This will never run again');
+//     const isPrivate = '23'
+//   })();
+
+//   (() => console.log('This will ALSO never run again'))();
+
+//   {
+//     const isPrivate = 23;
+//     var notPrivate = 46;
+//   }
+//   // console.log(isPrivate);
+//   console.log(notPrivate);
+
+// Arin Yazılım (IIFE)
+
+//  (function(){
+//     console.log(5 + 12);
+//   })()
+
+  // Function statements require a function name  -> Function'u görünce isim arıyor 
+  // function square(num){} -> Function Declaration
+
+  // sum();
+  // Neden Undefined oldu? ->Anlaşıldı :)
 
 
 
