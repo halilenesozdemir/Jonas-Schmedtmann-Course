@@ -1,4 +1,5 @@
-'use strict';
+// 'use strict';
+
 // --------------------------Default Parameters -----------------
 // const bookings = [];
 
@@ -468,10 +469,10 @@ Hints: Use many of the tools you learned about in this and the last section 😉
 
   // -------------------------- Immediately Invoked Function Expressions(IIFE) -----------------
 
-  const runOnce = function(){
-    console.log('This will never run again');
-  };
-  runOnce();
+  // const runOnce = function(){
+  //   console.log('This will never run again');
+  // };
+  // runOnce();
 
   // IIFE
 //  (function(){
@@ -499,6 +500,99 @@ Hints: Use many of the tools you learned about in this and the last section 😉
 
   // sum();
   // Neden Undefined oldu? ->Anlaşıldı :)
+
+
+
+  // Before Closure, I get to repeat related topics what understand easily the closures.
+  // Scope Chain Practises
+
+      // -------------------------- Scope Chain Practises -----------------------------
+
+      function calcAge( birthYear){
+        const age = 2037 - birthYear;
+
+        function printAge(){
+          const output = `${firstName} You are ${age}, born in ${birthYear}`
+          console.log(output);
+
+          if(birthYear >= 1981 && birthYear <= 1996){
+            var millenial = true; // Var is function scoped and not BLOCK SCOPED. Ignore the blocks just like if,for,while etc.
+
+            // Creating NEW variable with same name as outer scope'S variable
+            const firstName = 'Steven'
+
+            // Reassigning outer scope's variable
+            output = 'NEW OUTPUT'
+
+            const str = `Oh  and you're a millenial, ${firstName}`
+            console.log(str);
+
+              // Functions are block scoped, but remember that that is only true for strict mode.
+            function add(a,b){
+              return a+ b
+            }
+
+          }
+        // add(3,4) // ReferenceError: add is not defined in the strict mode
+        //  console.log(add(3,4));  // without strict mode -> answer is 7, but we have to use 'Strict mode'...
+          //  console.log(str);
+          console.log(millenial);
+
+        }
+
+
+        printAge();
+        return age;
+      }
+
+      const firstName = 'Jonas';
+      calcAge(1991);
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // -------------------------- Closures -----------------------------
+
+    // const secureBooking = function(){
+    //   let passengerCount = 0;
+
+    //   return function(){
+    //     passengerCount++
+    //     console.log(`${passengerCount} passengers`);
+    //   }
+    // }
+
+    // const booker = secureBooking(); 
+
+  
+
+
 
 
 
