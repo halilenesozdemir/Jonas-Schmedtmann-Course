@@ -508,45 +508,104 @@ Hints: Use many of the tools you learned about in this and the last section 😉
 
       // -------------------------- Scope Chain Practises -----------------------------
 
-      function calcAge( birthYear){
-        const age = 2037 - birthYear;
+      // function calcAge( birthYear){
+      //   const age = 2037 - birthYear;
 
-        function printAge(){
-          const output = `${firstName} You are ${age}, born in ${birthYear}`
-          console.log(output);
+      //   function printAge(){
+      //     const output = `${firstName} You are ${age}, born in ${birthYear}`
+      //     console.log(output);
 
-          if(birthYear >= 1981 && birthYear <= 1996){
-            var millenial = true; // Var is function scoped and not BLOCK SCOPED. Ignore the blocks just like if,for,while etc.
+      //     if(birthYear >= 1981 && birthYear <= 1996){
+      //       var millenial = true; // Var is function scoped and not BLOCK SCOPED. Ignore the blocks just like if,for,while etc.
 
-            // Creating NEW variable with same name as outer scope'S variable
-            const firstName = 'Steven'
+      //       // Creating NEW variable with same name as outer scope'S variable
+      //       const firstName = 'Steven'
 
-            // Reassigning outer scope's variable
-            output = 'NEW OUTPUT'
+      //       // Reassigning outer scope's variable
+      //       output = 'NEW OUTPUT'
 
-            const str = `Oh  and you're a millenial, ${firstName}`
-            console.log(str);
+      //       const str = `Oh  and you're a millenial, ${firstName}`
+      //       console.log(str);
 
-              // Functions are block scoped, but remember that that is only true for strict mode.
-            function add(a,b){
-              return a+ b
-            }
+      //         // Functions are block scoped, but remember that that is only true for strict mode.
+      //       function add(a,b){
+      //         return a+ b
+      //       }
 
-          }
-        // add(3,4) // ReferenceError: add is not defined in the strict mode
-        //  console.log(add(3,4));  // without strict mode -> answer is 7, but we have to use 'Strict mode'...
-          //  console.log(str);
-          console.log(millenial);
+      //     }
+      //   // add(3,4) // ReferenceError: add is not defined in the strict mode
+      //   //  console.log(add(3,4));  // without strict mode -> answer is 7, but we have to use 'Strict mode'...
+      //     //  console.log(str);
+      //     console.log(millenial);
 
-        }
+      //   }
 
 
-        printAge();
-        return age;
+      //   printAge();
+      //   return age;
+      // }
+
+      // const firstName = 'Jonas';
+      // calcAge(1991);
+
+      // -------------------------- Hoisting and TDZ practises  -----------------------------
+
+      // Variables
+      console.log(me);
+      // console.log(job);
+      // console.log(year);
+
+
+      var me = 'Jonas';
+      let job = 'teacher';
+      const year = 1991;
+
+      //Functions
+      console.log(addDecl(2,3));
+      // console.log(addExpr(2,3));
+      // console.log(addArrow(2,3));
+
+
+
+      function addDecl(a,b){
+        return a+b
       }
 
-      const firstName = 'Jonas';
-      calcAge(1991);
+      // Watch out the const -> If you have a const, there is no hoisting. Remember TDZ
+
+      const addExpr = function(a,b){
+        return a+b
+      }
+
+      const addArrow = (a,b) => a+b
+
+      // If we used the var , for declare, guess, what happens?
+      
+      // var addExpr = function(a,b){
+      //   return a+b
+      // }
+
+      // var addArrow = (a,b) => a+b
+
+      //addExpr is not a function -> addExpr undefined oluyor, fakat invoke etmek isterken undefined(2,3) gibi kullanıyorsun. Welcome to the error :)
+
+      // Pitfall of Hoisting -> EXAMPLE
+      console.log(numProducts);  
+      if(!numProducts) deleteShoppingCart();
+
+      var numProducts = 10;
+
+      function deleteShoppingCart(){
+        console.log('All products deleted!');
+      }
+
+      // PLEASE DON'T USE VAR TO DECLARE VARIABLES
+
+      //
+
+      
+
+
 
  
 
