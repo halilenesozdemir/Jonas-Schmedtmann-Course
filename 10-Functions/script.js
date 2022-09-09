@@ -637,26 +637,130 @@ Hints: Use many of the tools you learned about in this and the last section 😉
 
 // -------------------------- Closures Part 1 -----------------------------
 
-const secureBooking = function(){
-  let passengerCount = 0;
+// const secureBooking = function(){
+//   let passengerCount = 0;
 
-  return function(){
-    passengerCount++;
-    console.log(`${passengerCount} passengers`);
-  }
-}
+//   return function(){
+//     passengerCount++;
+//     console.log(`${passengerCount} passengers`);
+//   }
+// }
 
-const booker = secureBooking();
-// console.log(booker);
+// const booker = secureBooking();
+// // console.log(booker);
 
-booker();
-booker();
-booker();
+// booker();
+// booker();
+// booker();
 
 // console.dir(booker); -> Scopes -> Closure [[Scopes  ]] =>  Whenever you see these double brackets here,that means that means that it is an internal property, which we cannot acces from our code...
 
 
 // -------------------------- Closure Examples -----------------------------
+
+// let f;
+
+// const g = function(){
+//   const a = 23;
+//   f = function(){
+//     console.log(a*2);
+//   }
+// }
+
+// const h = function(){
+//   const b= 777;
+//     f = function(){
+//     console.log(b*2);
+//   }
+// }
+
+// g();
+// f();
+// console.dir(f)
+
+
+// // Re assigning f function
+
+// h();
+// f();
+// console.dir(f)
+
+// // Example 2
+// const boardPassengers = function(n, wait){
+//   const perGroup = n / 3;
+
+// setTimeout(function(){
+//   console.log(`We are now boarding all ${n} passengers`);
+//   console.log(`There are 3 groups, each with ${perGroup} passengers`);
+// },wait* 1000)
+
+//   console.log(`Will start boarding in ${wait} seconds`);
+// }
+
+// const perGroup = 1000; // Closure has priority over to scope chain...
+// boardPassengers(180,3)
+
+// -------------------------- Different Sources ( WEB DEV SIMPLIFIED ) ----------------------------
+
+// let myName = 'Kyle';
+
+// function printName(){
+//   console.log(myName);
+// }
+
+// myName = 'Joey'
+
+// printName()
+
+// myName = 'Kate'
+
+// printName()
+
+// function outerFunction(outerVariable){
+//   const outer2 = 'Hi'
+//   return function innerFunction(innerVariable){
+//     console.log('outer variable: ' + outerVariable);
+//     console.log('inner variable: ' + innerVariable);
+//     console.log(outer2);
+//   }
+// }
+
+// const newFunction =  outerFunction('outside')
+// newFunction('inside')
+// // console.log(outerVariable);
+
+// // -------------------------- Coding Challenge #2 ----------------------------
+
+// 1. Take the IIFE below and at the end of the function, attach an event listener that
+// changes the color of the selected h1 element ('header') to blue, each time
+// the body element is clicked. Do not select the h1 element again!
+// 2. And now explain to yourself (or someone around you) why this worked! Take all
+// the time you need. Think about when exactly the callback function is executed,
+// and what that means for the variables involved in this example.
+
+(function () {
+ const header = document.querySelector('h1');
+ header.style.color = 'red';
+
+  document.querySelector('body').addEventListener('click',
+  function(){
+    header.style.color = 'blue'
+  })
+ })()
+
+// Toggle Solution
+
+// "use strict";
+ 
+// (function () {
+//   const header = document.querySelector("h1");
+//   header.style.color = "red";
+//   document.querySelector("body").addEventListener("click", function () {
+//     header.style.color = header.style.color === "red" ? "blue" : "red";
+//   });
+// })();
+
+
 
 
 
