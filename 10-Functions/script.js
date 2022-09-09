@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 // --------------------------Default Parameters -----------------
 // const bookings = [];
@@ -503,151 +503,141 @@ Hints: Use many of the tools you learned about in this and the last section 😉
 
 
 
-  // Before Closure, I get to repeat related topics what understand easily the closures.
-  // Scope Chain Practises
+// Before Closure, I get to repeat related topics what understand easily the closures.
+// Scope Chain Practises
 
-      // -------------------------- Scope Chain Practises -----------------------------
+// -------------------------- Scope Chain Practises -----------------------------
 
-      // function calcAge( birthYear){
-      //   const age = 2037 - birthYear;
+// function calcAge( birthYear){
+//   const age = 2037 - birthYear;
 
-      //   function printAge(){
-      //     const output = `${firstName} You are ${age}, born in ${birthYear}`
-      //     console.log(output);
+//   function printAge(){
+//     const output = `${firstName} You are ${age}, born in ${birthYear}`
+//     console.log(output);
 
-      //     if(birthYear >= 1981 && birthYear <= 1996){
-      //       var millenial = true; // Var is function scoped and not BLOCK SCOPED. Ignore the blocks just like if,for,while etc.
+//     if(birthYear >= 1981 && birthYear <= 1996){
+//       var millenial = true; // Var is function scoped and not BLOCK SCOPED. Ignore the blocks just like if,for,while etc.
 
-      //       // Creating NEW variable with same name as outer scope'S variable
-      //       const firstName = 'Steven'
+//       // Creating NEW variable with same name as outer scope'S variable
+//       const firstName = 'Steven'
 
-      //       // Reassigning outer scope's variable
-      //       output = 'NEW OUTPUT'
+//       // Reassigning outer scope's variable
+//       output = 'NEW OUTPUT'
 
-      //       const str = `Oh  and you're a millenial, ${firstName}`
-      //       console.log(str);
+//       const str = `Oh  and you're a millenial, ${firstName}`
+//       console.log(str);
 
-      //         // Functions are block scoped, but remember that that is only true for strict mode.
-      //       function add(a,b){
-      //         return a+ b
-      //       }
+//         // Functions are block scoped, but remember that that is only true for strict mode.
+//       function add(a,b){
+//         return a+ b
+//       }
 
-      //     }
-      //   // add(3,4) // ReferenceError: add is not defined in the strict mode
-      //   //  console.log(add(3,4));  // without strict mode -> answer is 7, but we have to use 'Strict mode'...
-      //     //  console.log(str);
-      //     console.log(millenial);
+//     }
+//   // add(3,4) // ReferenceError: add is not defined in the strict mode
+//   //  console.log(add(3,4));  // without strict mode -> answer is 7, but we have to use 'Strict mode'...
+//     //  console.log(str);
+//     console.log(millenial);
 
-      //   }
+//   }
 
 
-      //   printAge();
-      //   return age;
-      // }
+//   printAge();
+//   return age;
+// }
 
-      // const firstName = 'Jonas';
-      // calcAge(1991);
+// const firstName = 'Jonas';
+// calcAge(1991);
 
-      // -------------------------- Hoisting and TDZ practises  -----------------------------
+// -------------------------- Hoisting and TDZ practises  -----------------------------
 
-      // Variables
-      console.log(me);
-      // console.log(job);
-      // console.log(year);
+// Variables
+// console.log(me);
+// console.log(job);
+// console.log(year);
 
 
-      var me = 'Jonas';
-      let job = 'teacher';
-      const year = 1991;
+// var me = 'Jonas';
+// let job = 'teacher';
+// const year = 1991;
 
-      //Functions
-      console.log(addDecl(2,3));
-      // console.log(addExpr(2,3));
-      // console.log(addArrow(2,3));
+//Functions
+// console.log(addDecl(2,3));
+// console.log(addExpr(2,3));
+// console.log(addArrow(2,3));
 
 
 
-      function addDecl(a,b){
-        return a+b
-      }
+// function addDecl(a,b){
+//   return a+b
+// }
 
-      // Watch out the const -> If you have a const, there is no hoisting. Remember TDZ
+// Watch out the const -> If you have a const, there is no hoisting. Remember TDZ
 
-      const addExpr = function(a,b){
-        return a+b
-      }
+// const addExpr = function(a,b){
+//   return a+b
+// }
 
-      const addArrow = (a,b) => a+b
+// const addArrow = (a,b) => a+b
 
-      // If we used the var , for declare, guess, what happens?
-      
-      // var addExpr = function(a,b){
-      //   return a+b
-      // }
+// If we used the var , for declare, guess, what happens?
 
-      // var addArrow = (a,b) => a+b
+// var addExpr = function(a,b){
+//   return a+b
+// }
 
-      //addExpr is not a function -> addExpr undefined oluyor, fakat invoke etmek isterken undefined(2,3) gibi kullanıyorsun. Welcome to the error :)
+// var addArrow = (a,b) => a+b
 
-      // Pitfall of Hoisting -> EXAMPLE
-      console.log(numProducts);  
-      if(!numProducts) deleteShoppingCart();
+//addExpr is not a function -> addExpr undefined oluyor, fakat invoke etmek isterken undefined(2,3) gibi kullanıyorsun. Welcome to the error :)
 
-      var numProducts = 10;
+// Pitfall of Hoisting -> EXAMPLE
+// console.log(numProducts);  
+// if(!numProducts) deleteShoppingCart();
 
-      function deleteShoppingCart(){
-        console.log('All products deleted!');
-      }
+// var numProducts = 10;
 
-      // PLEASE DON'T USE VAR TO DECLARE VARIABLES
+// function deleteShoppingCart(){
+//   console.log('All products deleted!');
+// }
 
-      //
+// PLEASE DON'T USE VAR TO DECLARE VARIABLES
 
-      
 
+// -------------------------- This keyword practises  -----------------------------
 
+// console.log(this);
 
- 
+// const calcAge = function(birthYear){
+//   // console.log(2037- birthYear);
+//   // console.log(this);
+// };
+// calcAge(1991)
 
+// const calcAgeArrow = (birthYear) => console.log(this);
+// calcAgeArrow(1990)
 
+// const jonas = {
+//   year:1991,
+//   calcAge(){
+//     console.log(this);
+//     console.log(2037 -this.year);
+//   }
+// }
+// jonas.calcAge()
 
+// const matilda = {
+//   year: 2017,
+// }
 
+// matilda.calcAge = jonas.calcAge;
+// matilda.calcAge()
 
+// const f = jonas.calcAge;
+// f();
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // -------------------------- Closures -----------------------------
-
-    // const secureBooking = function(){
-    //   let passengerCount = 0;
-
-    //   return function(){
-    //     passengerCount++
-    //     console.log(`${passengerCount} passengers`);
-    //   }
-    // }
-
-    // const booker = secureBooking(); 
+    
 
   
 
