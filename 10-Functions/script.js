@@ -635,6 +635,30 @@ Hints: Use many of the tools you learned about in this and the last section 😉
 // f();
 
 
+// -------------------------- Closures Part 1 -----------------------------
+
+const secureBooking = function(){
+  let passengerCount = 0;
+
+  return function(){
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  }
+}
+
+const booker = secureBooking();
+// console.log(booker);
+
+booker();
+booker();
+booker();
+
+// console.dir(booker); -> Scopes -> Closure [[Scopes  ]] =>  Whenever you see these double brackets here,that means that means that it is an internal property, which we cannot acces from our code...
+
+
+// -------------------------- Closure Examples -----------------------------
+
+
 
 
     
