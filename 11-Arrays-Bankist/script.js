@@ -252,28 +252,52 @@ Hints: Use tools from all lectures in this section so far 😉
 // const allDogs = [...correctedJuliaData,...kateData]
 // // console.log(allDogs);
 
-  const dogsJulia =[3, 5, 2, 12, 7];
-  const dogsKate = [4, 1, 15, 8, 3];
+//   const dogsJulia =[3, 5, 2, 12, 7];
+//   const dogsKate = [4, 1, 15, 8, 3];
 
-const checkDogs = function(dogsJulia,dogsKate){
-  const errorJuliaData = dogsJulia.slice();
-  const correctedJuliaData = errorJuliaData.slice(1,-3)
+// const checkDogs = function(dogsJulia,dogsKate){
+//   const errorJuliaData = dogsJulia.slice();
+//   const correctedJuliaData = errorJuliaData.slice(1,-3)
 
-  const allDogs = [...correctedJuliaData,...dogsKate];
+//   const allDogs = [...correctedJuliaData,...dogsKate];
 
 
-allDogs.forEach(function(age,i){
-  if(age >= 3) console.log(`Dog number ${i+1} is an adult, and is ${age} years old`);
-  else  console.log(`Dog number ${i+1} is still a puppy 🐶`);
-});
+// allDogs.forEach(function(age,i){
+//   if(age >= 3) console.log(`Dog number ${i+1} is an adult, and is ${age} years old`);
+//   else  console.log(`Dog number ${i+1} is still a puppy 🐶`);
+// });
 
-// return allDogs;
+// // return allDogs;
 
-}
+// }
 
-const total = checkDogs(dogsJulia,dogsKate);
+// const total = checkDogs(dogsJulia,dogsKate);
 
-// ---------------------- Data Transformations: map,filter,reduce  ----------------------
+// ---------------------- The map Method  ----------------------
+
+//  const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// const eurToUsd= 1.1;
+
+// const movementsUSD = movements.map(mov => mov * eurToUsd)
+// console.log(movements);
+// console.log(movementsUSD);
+
+// const movementsUSDfor = [];
+
+// for(const mov of movements) movementsUSDfor.push(mov * eurToUsd)
+// console.log(movementsUSDfor);
+
+// const movementsDescriptions = movements.map((mov,i) => 
+//  `Movement ${i+1} You ${mov> 0  ? 'deposited' : 'withdrew' } ${Math.abs(mov)}`
+// )
+
+// console.log(movementsDescriptions);
+
+
+
+
+
 
 
 
