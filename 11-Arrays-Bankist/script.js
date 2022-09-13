@@ -3,7 +3,6 @@
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
-
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -25,7 +24,7 @@
 // SLICE METHOD
 
 // Slice methods returns a new array. Don't mutate the original array...
-// console.log(arr.slice(2));  
+// console.log(arr.slice(2));
 // console.log(arr.slice(2,4));  // Index 4 is not included... length === 4-2!!!
 // console.log(arr.slice(-2));
 // console.log(arr.slice(-1));
@@ -33,11 +32,11 @@
 
 // Which one is correct! Both of them and choose sth. It's up to you.
 // console.log(arr.slice()); // shallow copy method
-// console.log([...arr]); 
+// console.log([...arr]);
 
 // SPLICE METHOD
 
-// console.log(arr.splice(2)); 
+// console.log(arr.splice(2));
 // console.log(arr); // OOOPS
 // (3) ['c', 'd', 'e'] -> Takes this part and deleted from original array.
 // (2) ['a', 'b']  /// New array, remaining array, poor array :)
@@ -60,12 +59,11 @@
 // const letters = arr.concat(arr2);
 // console.log(letters);
 // console.log([...arr, ...arr2]);
-// console.log(arr,arr2); 
+// console.log(arr,arr2);
 //concat or spread -> It'S just a matter of personal preference...
 
 //JOIN Method
 // console.log(letters.join(','));
-
 
 // ------------------------143. The new at Method ----------------------
 
@@ -165,7 +163,7 @@ const account4 = {
   pin: 4444,
 };
 
- const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const accounts = [account1, account2, account3, account4];
 
@@ -195,59 +193,54 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-
-
-const displayMovements = function(movements){
-  containerMovements.innerHTML = ''
-  movements.forEach(function(mov,i,){
-    const type = mov > 0 ? 'deposit' : 'withdrawal'
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = '';
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
     <div class="movements__row">
-      <div class="movements__type movements__type--${type}">${i+1} ${type}</div>
+      <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
       <div class="movements__value">${mov}€</div>
     </div>
-    `
+    `;
 
-    containerMovements.insertAdjacentHTML('afterbegin',html)
+    containerMovements.insertAdjacentHTML('afterbegin', html);
     // if you use beforenend, the indexes are reversed...
-  
-})
-}
-displayMovements(account1.movements)
+  });
+};
+displayMovements(account1.movements);
 
-const calcDisplayBalance = function(movements){
-  const balance = movements.reduce((acc,mov) => acc+ mov,0);
-  labelBalance.textContent = `${balance} EUR`
-}
-calcDisplayBalance(account1.movements)
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
 
-
-
-const createUserNames = function (accs){
-accs.forEach(function(acc){
-  acc.username = acc.owner
-  .toLowerCase()
-  .split(' ')
-  .map((item) => item[0] )
-  .join('')
-});
+const createUserNames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map((item) => item[0])
+      .join('');
+  });
 };
 
-createUserNames(accounts)
+createUserNames(accounts);
 // console.log(accounts);
 
-    // const html = `
-    // <div class="movements__row">
-    //   <div class="movements__type movements__type--${type}">${i+1} ${type}</div>
-    //   <div class="movements__value">${mov}</div>
-    // </div>
-    // `
+// const html = `
+// <div class="movements__row">
+//   <div class="movements__type movements__type--${type}">${i+1} ${type}</div>
+//   <div class="movements__value">${mov}</div>
+// </div>
+// `
 
-    // containerMovements.insertAdjacentHTML('afterbegin',html)
-    // // if you use beforenend, the indexes are reversed...
+// containerMovements.insertAdjacentHTML('afterbegin',html)
+// // if you use beforenend, the indexes are reversed...
 
-    // Minnak Uğraşmalar
+// Minnak Uğraşmalar
 
 // const displayDeposits = function(movements){
 //   labelSumIn.innerHTML = '';
@@ -270,7 +263,6 @@ createUserNames(accounts)
 // displayDeposits([200, 450, -400, 3000, -650, -130, 70, 1300])
 // displayWithDrawal([200, 450, -400, 3000, -650, -130, 70, 1300])
 
-
 // const calcDisplaySummary = function(movements){
 //   const incomes = movements.filter(mov => mov > 0)
 //   .reduce((acc,mov)=> acc + mov,0);
@@ -290,18 +282,7 @@ createUserNames(accounts)
 //   labelSumInterest.textContent =  `${interest}€`
 // }
 
-
-
-
 // calcDisplaySummary(account1.movements)
-
-
-
-
-
-
-
-
 
 // ---------------------- Coding Challenge #1  ----------------------
 
@@ -350,7 +331,6 @@ Hints: Use tools from all lectures in this section so far 😉
 
 //   const allDogs = [...correctedJuliaData,...dogsKate];
 
-
 // allDogs.forEach(function(age,i){
 //   if(age >= 3) console.log(`Dog number ${i+1} is an adult, and is ${age} years old`);
 //   else  console.log(`Dog number ${i+1} is still a puppy 🐶`);
@@ -377,7 +357,7 @@ Hints: Use tools from all lectures in this section so far 😉
 // for(const mov of movements) movementsUSDfor.push(mov * eurToUsd)
 // console.log(movementsUSDfor);
 
-// const movementsDescriptions = movements.map((mov,i) => 
+// const movementsDescriptions = movements.map((mov,i) =>
 //  `Movement ${i+1} You ${mov> 0  ? 'deposited' : 'withdrew' } ${Math.abs(mov)}`
 // )
 
@@ -385,8 +365,7 @@ Hints: Use tools from all lectures in this section so far 😉
 
 // ---------------------- Filter Method ----------------------
 
-
-  // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 //   const deposits = movements.filter(function(mov){
 //     return mov > 0;
@@ -469,9 +448,7 @@ Just wanted to share, maybe someone can benefit.
 
 // .reduce((acc,mov) => acc + mov,0 );
 
-
 // console.log(sumOfEuro);
-
 
 // ---------------------- Coding Challenge #2  ----------------------
 
@@ -545,7 +522,6 @@ Just wanted to share, maybe someone can benefit.
 // console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
 // console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
 
-
 // ---------------------- Coding Challenge #3  ----------------------
 
 // Let's go back to Julia and Kate's study about dogs. This time, they want to convert
@@ -580,33 +556,51 @@ Just wanted to share, maybe someone can benefit.
 
 // console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
 
-const calcAverageHumanAge = function(dogAge){
-  const x = dogAge.map((cur)=>{
- if (cur <=2 ){
-      return cur * 2
-    }else {
-      return 16 + cur * 4 
-    }
-  })
-  .filter((cur)=>{
-    if (cur >= 18) {
-      return cur
-    }
-  }).reduce((acc, cur, i, arr)=>{
-    return acc+ cur /arr.length
-  }, 0)
-  return x
-}
-console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]))
+// const calcAverageHumanAge = function(dogAge){
+//   const x = dogAge.map((cur)=>{
+//  if (cur <=2 ){
+//       return cur * 2
+//     }else {
+//       return 16 + cur * 4
+//     }
+//   })
+//   .filter((cur)=>{
+//     if (cur >= 18) {
+//       return cur
+//     }
+//   }).reduce((acc, cur, i, arr)=>{
+//     return acc+ cur /arr.length
+//   }, 0)
+//   return x
+// }
+// console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]))
 
+// ---------------------- The Find Method  ----------------------
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+const firstWithdrawal = movements.find((mov) => mov < 0);
+console.log(firstWithdrawal);
 
+// console.log(accounts);
 
+// const account = accounts.find((acc) => acc.owner === 'Jessica Davis');
+// console.log(account);
 
+// My For-of Solution
 
+// for (const acc of accounts) {
+//   if (acc.owner === 'Jessica Davis') console.log(acc);
+// }
 
+//Different solutions
 
-
-
-
+//As soon as account we are looking for is found, break the for loop
+// let accountfor;
+// for (const account of accounts) {
+//   if (account.owner === 'Jessica Davis') {
+//     accountfor = account;
+//     break;
+//   }
+// }
+// console.log(accountfor);
