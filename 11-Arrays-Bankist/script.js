@@ -319,6 +319,18 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some((mov) => mov >= amount * 0.1)) {
+    currentAccount.movements.push(amount);
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -337,8 +349,6 @@ btnClose.addEventListener('click', function (e) {
     containerApp.style.opacity = 0;
   }
 });
-
-// ---------------------- the FindIndex method  ----------------------
 
 // Minnak Uğraşmalar
 
@@ -685,3 +695,29 @@ Just wanted to share, maybe someone can benefit.
 //   }
 // }
 // console.log(accountfor);
+
+// ---------------------- some and every   ----------------------
+
+//EQUALITY
+
+// console.log(movements.includes(-130));
+
+//SOME: CONDITION
+// console.log(movements.some((mov) => mov === -130));
+
+// const anyDeposits = movements.some((mov) => mov > 0);
+// console.log(anyDeposits);
+
+//EVERY: CONDITION
+
+/* const everyFunction = function (movs) {
+  return movs.every((mov) => mov > 0);
+};
+
+console.log(everyFunction(account4.movements)); */
+
+//Seperate callback
+const deposit = (mov) => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
