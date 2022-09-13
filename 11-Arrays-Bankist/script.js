@@ -163,7 +163,7 @@ const account4 = {
   pin: 4444,
 };
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const accounts = [account1, account2, account3, account4];
 
@@ -193,9 +193,12 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
-  movements.forEach(function (mov, i) {
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
@@ -348,6 +351,13 @@ btnClose.addEventListener('click', function (e) {
     //Hide UI
     containerApp.style.opacity = 0;
   }
+});
+
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
 
 // Minnak Uğraşmalar
@@ -755,15 +765,52 @@ console.log(everyFunction(account4.movements)); */
 // console.log(overallBalance);
 
 //flat
-const overallBalance = accounts
-  .map((acc) => acc.movements)
-  .flat()
-  .reduce((acc, movs) => acc + movs, 0);
+// const overallBalance = accounts
+//   .map((acc) => acc.movements)
+//   .flat()
+//   .reduce((acc, movs) => acc + movs, 0);
 
-console.log(overallBalance);
+// console.log(overallBalance);
 
 //flatMap
 
-const overallBalance2 = accounts.flatMap((acc) => acc.movements).reduce((acc, movs) => acc + movs, 0);
+// const overallBalance2 = accounts.flatMap((acc) => acc.movements).reduce((acc, movs) => acc + movs, 0);
 
-console.log(overallBalance2);
+// console.log(overallBalance2);
+
+// ---------------------- Sorting Arrays   ----------------------
+
+// built-in sort method mutates the original array. We have to be very careful with this method.
+
+// Strings
+
+// const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+// console.log(owners.sort());
+
+// // Numbers
+// console.log(movements);
+// // console.log(movements.sort());
+
+// // return < 0, A, B (KEEP ORDER)
+// //return > 0 B,A (SWITCH ORDER)
+
+// //Ascending
+
+// // movements.sort((a, b) => {
+// //   if (a > b) return 1;
+// //   if (b > a) return -1;
+// // });
+// // console.log(movements);
+
+// movements.sort((a, b) => a - b);
+// console.log(movements);
+
+// //Descending
+// // movements.sort((a, b) => {
+// //   if (a > b) return -1;
+// //   if (b > a) return 1;
+// // });
+// movements.sort((a, b) => b - a);
+// console.log(movements);
+
+//Please don't this sort method mixing cases. (Contains String + Numbers)
