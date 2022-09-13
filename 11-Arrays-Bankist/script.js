@@ -163,7 +163,7 @@ const account4 = {
   pin: 4444,
 };
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const accounts = [account1, account2, account3, account4];
 
@@ -717,7 +717,53 @@ Just wanted to share, maybe someone can benefit.
 console.log(everyFunction(account4.movements)); */
 
 //Seperate callback
-const deposit = (mov) => mov > 0;
-console.log(movements.some(deposit));
-console.log(movements.every(deposit));
-console.log(movements.filter(deposit));
+// const deposit = (mov) => mov > 0;
+// console.log(movements.some(deposit));
+// console.log(movements.every(deposit));
+// console.log(movements.filter(deposit));
+
+// ---------------------- flat and flatmap method   ----------------------
+
+// const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+
+// console.log(arr.flat());
+
+// const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+// console.log(arrDeep.flat(2));
+
+// Minnak Çalışmalara Devam -> Googling
+
+// let allMovements = [];
+// for (let i = 0; i < accounts.length; i++) {
+//   allMovements.push(accounts[i].movements);
+// }
+// console.log(allMovements);
+
+// const merge2 = allMovements.flat();
+// console.log(merge2);
+
+// const merged = [].concat.apply([], allMovements);
+// console.log(merged);
+
+// Flat method continue (Jonas)
+
+// const accountMovements = accounts.map((acc) => acc.movements);
+// console.log(accountMovements);
+// const allMovements = accountMovements.flat();
+// // console.log(merged);
+// const overallBalance = allMovements.reduce((acc, movs) => acc + movs, 0);
+// console.log(overallBalance);
+
+//flat
+const overallBalance = accounts
+  .map((acc) => acc.movements)
+  .flat()
+  .reduce((acc, movs) => acc + movs, 0);
+
+console.log(overallBalance);
+
+//flatMap
+
+const overallBalance2 = accounts.flatMap((acc) => acc.movements).reduce((acc, movs) => acc + movs, 0);
+
+console.log(overallBalance2);
