@@ -319,6 +319,27 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  // inputClosePin.blur();
+  if (inputCloseUsername.value === currentAccount.username && Number(inputClosePin.value) === currentAccount.pin) {
+    inputCloseUsername.value = inputClosePin.value = '';
+    const index = accounts.findIndex((acc) => acc.username === currentAccount.username);
+    //Alternative
+    // const index = accounts.indexOf(currentAccount);
+    console.log(index);
+
+    //Delete Account
+    accounts.splice(index, 1);
+
+    //Hide UI
+    containerApp.style.opacity = 0;
+  }
+});
+
+// ---------------------- the FindIndex method  ----------------------
+
 // Minnak Uğraşmalar
 
 // const displayDeposits = function(movements){
