@@ -843,14 +843,124 @@ console.log(everyFunction(account4.movements)); */
 // const diceRoll = Array.from({ length: 100 }, () => Math.trunc(Math.random() * 6) + 1);
 // console.log(diceRoll);
 
-labelBalance.addEventListener('click', function () {
-  //We prefer this from nodelist (dom) to array
-  const movementsUI = Array.from(document.querySelectorAll('.movements__value'), (el) =>
-    Number(el.textContent.replace('€', ''))
-  );
+// labelBalance.addEventListener('click', function () {
+//   //We prefer this from nodelist (dom) to
+//   const movementsUI = Array.from(document.querySelectorAll('.movements__value'), (el) =>
+//     Number(el.textContent.replace('€', ''))
+//   );
 
-  console.log(movementsUI);
+//   console.log(movementsUI);
 
-  // const movementsUI2 = [...document.querySelectorAll('.movements__value')];
-  // console.log(movementsUI2);
-});
+//   // const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+//   // console.log(movementsUI2);
+// })
+
+// -----------------------Arrays Method Practice----------------------------
+
+//1.
+// const bankDepositsSum = accounts
+//   .map((acc) => acc.movements)
+//   .flat()
+//   .filter((mov) => mov > 0)
+//   .reduce((acc, cur) => acc + cur, 0);
+
+// console.log(bankDepositsSum);
+
+//2.
+// const numDeposits1000 = accounts.flatMap((acc) => acc.movements).filter((mov) => mov > 1000).length;
+
+// console.log(numDeposits1000);
+
+//Using Reduce for this problem...
+// const numDeposits1000 = accounts
+//   .flatMap((acc) => acc.movements)
+//   // .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0);
+//   .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+
+// console.log(numDeposits1000);
+
+//Prefixed ++ operator
+// let a = 10;
+// console.log(a++);
+// console.log(a);
+
+//3.
+// const { deposits, withdrawals } = accounts
+//   .flatMap((acc) => acc.movements)
+//   .reduce(
+//     (sums, cur) => {
+//       // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+
+//       sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+//       return sums;
+//     },
+//     { deposits: 0, withdrawals: 0 }
+//   );
+
+// console.log(deposits, withdrawals);
+
+//4. Map filter reduce -> Just only reduce
+
+//Not mine, Eugene's solution and I like this :)
+
+// // 1. just double reduce 😉
+// const bankDepositSum = accounts.reduce((acc, cur) => {
+//   return acc += cur.movements.reduce((acc, cur) => {
+//     return cur > 0 ? acc += cur : acc;
+//   }, 0);
+// }, 0);
+
+// console.log(bankDepositSum); // 25180
+
+// // 2. once more 😄
+// const numDeposits1000 = accounts.reduce((acc, cur) => {
+//   return acc += cur.movements.reduce((acc, cur) => {
+//     return cur >= 1000 ? acc += 1 : acc;
+//   }, 0);
+// }, 0);
+
+// console.log(numDeposits1000); // 6
+
+// // 3. once again 😆
+// const sums = accounts.reduce((sums, cur) => {
+//   cur.movements.reduce((acc, v) => {
+//     sums[v > 0 ? 'deposits' : 'withdrawals'] += v;
+//   }, 0);
+//   return sums;
+// }, {deposits: 0, withdrawals: 0});
+
+// console.log(sums); // {deposits: 25180, withdrawals: -7340}
+
+// // 4. and again 🤗
+// const convertTitleCase = function(string) {
+//   const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with', 'not'];
+//   return string.toLowerCase().split(' ').reduce((acc, w) => {
+//     let con = false;
+//     exceptions.reduce((ac, cur) => {
+//       if (cur === w) con = true;
+//     }, 0);
+//     if (con) acc.push(w);
+//     else acc.push(w.replace(w[0], w[0].toUpperCase()));
+//     return acc;
+//   },[]).join(' ');
+// };
+
+// console.log(convertTitleCase('this is a nice title but not perfect')); // This Is a Nice Title but not Perfect
+
+//4.
+// this is a nice title => This Is a Nice Title
+const convertTitleCase = function (title) {
+  const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
+
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map((word) => (exceptions.includes(word) ? word : capitalize(word)))
+    .join(' ');
+
+  return capitalize(titleCase);
+};
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title but not too long'));
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
