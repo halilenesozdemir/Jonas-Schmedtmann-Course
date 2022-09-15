@@ -413,6 +413,45 @@ console.log(Number('230_000')); // NaN
 
 console.log(parseInt('230_000')); // 230 -> In front of the underscore
 
+// -------------------- Working with BigInt ---------------
+console.log(2 ** 53 -1);
+console.log(Number.MAX_SAFE_INTEGER);
+// If you pass this max safe value -> The numbers can't be represented accurately... Tested.
+// console.log(2 ** 53 + 0);
+// console.log(2 ** 53 + 1);
+// console.log(2 ** 53 + 2);
+// console.log(2 ** 53 + 3);
+// console.log(2 ** 53 + 4);
+
+console.log(4544884888484848484848484848484848484848484848n);
+console.log(BigInt('4544884888484848484848484848484848484848484848'));
+
+//Operations 
+console.log(10000n + 10000n);
+console.log(325352232323222323222323n * 1000000000000000000n);
+
+// console.log(Math.sqrt(16n)); // Uncaught TypeError: Cannot convert a BigInt value to a number
+
+const huge = 2023230050023020552n;
+const num = 23;
+// console.log(huge * num); // Uncaught TypeError: Cannot mix BigInt and other types, use explicit conversions
+
+// console.log(huge * BigInt(num));
+
+//Exceptions
+console.log(20n > 15); // true
+console.log(20n === 20); //false
+console.log(typeof 20n); //bigint
+console.log(20n == '20'); // true
+
+console.log(huge + ' is really big!!!! ' );
+
+// Divisions
+console.log(10n / 3n); // Give a closest bigint 3n
+console.log(10 / 3);
+
+
+
 
 
 
