@@ -371,51 +371,51 @@ Thanks
 
 // --------------------The Remainder Operator ---------------
 
-console.log(5 % 2);
-console.log(5 /2); // 5 = 2*2 +1;
-console.log(8 % 3);
-console.log(8 / 3);
-console.log(6 % 2);
-console.log(6 / 2);
+// console.log(5 % 2);
+// console.log(5 /2); // 5 = 2*2 +1;
+// console.log(8 % 3);
+// console.log(8 / 3);
+// console.log(6 % 2);
+// console.log(6 / 2);
 
-const isEven = (n) => n % 2 === 0;
-console.log(isEven(8));
-console.log(isEven(23));
-console.log(isEven(28));
+// const isEven = (n) => n % 2 === 0;
+// console.log(isEven(8));
+// console.log(isEven(23));
+// console.log(isEven(28));
 
 
 
-labelBalance.addEventListener('click', function(){
-[...document.querySelectorAll('.movements__row')].forEach(function(row,i){
-  if(i % 2 === 0) row.style.backgroundColor = 'yellow'
-  if(i % 3 ===0 ) row.style.backgroundColor = 'blue'
-}
-)})
+// labelBalance.addEventListener('click', function(){
+// [...document.querySelectorAll('.movements__row')].forEach(function(row,i){
+//   if(i % 2 === 0) row.style.backgroundColor = 'yellow'
+//   if(i % 3 ===0 ) row.style.backgroundColor = 'blue'
+// }
+// )})
 // hearing Nth time -> Good feature -> remainder
 
 // -------------------- Numeric Separators ---------------
 
 // 287,460,000,000
-const diameter = 287_460_000_000;
-console.log(diameter);
+// const diameter = 287_460_000_000;
+// console.log(diameter);
 
-const price = 345_99;
-console.log(price);
+// const price = 345_99;
+// console.log(price);
 
-const transferFee1 = 15_00;
-const transferFee2 = 1_500;
+// const transferFee1 = 15_00;
+// const transferFee2 = 1_500;
 
-const PI = 3.1415
-console.log(PI);
+// const PI = 3.1415
+// console.log(PI);
 
-console.log(Number('230000')); // It worked
-console.log(Number('230_000')); // NaN
+// console.log(Number('230000')); // It worked
+// console.log(Number('230_000')); // NaN
 
-console.log(parseInt('230_000')); // 230 -> In front of the underscore
+// console.log(parseInt('230_000')); // 230 -> In front of the underscore
 
 // -------------------- Working with BigInt ---------------
-console.log(2 ** 53 -1);
-console.log(Number.MAX_SAFE_INTEGER);
+// console.log(2 ** 53 -1);
+// console.log(Number.MAX_SAFE_INTEGER);
 // If you pass this max safe value -> The numbers can't be represented accurately... Tested.
 // console.log(2 ** 53 + 0);
 // console.log(2 ** 53 + 1);
@@ -423,32 +423,72 @@ console.log(Number.MAX_SAFE_INTEGER);
 // console.log(2 ** 53 + 3);
 // console.log(2 ** 53 + 4);
 
-console.log(4544884888484848484848484848484848484848484848n);
-console.log(BigInt('4544884888484848484848484848484848484848484848'));
+// console.log(4544884888484848484848484848484848484848484848n);
+// console.log(BigInt('4544884888484848484848484848484848484848484848'));
 
 //Operations 
-console.log(10000n + 10000n);
-console.log(325352232323222323222323n * 1000000000000000000n);
+// console.log(10000n + 10000n);
+// console.log(325352232323222323222323n * 1000000000000000000n);
 
 // console.log(Math.sqrt(16n)); // Uncaught TypeError: Cannot convert a BigInt value to a number
 
-const huge = 2023230050023020552n;
-const num = 23;
+// const huge = 2023230050023020552n;
+// const num = 23;
 // console.log(huge * num); // Uncaught TypeError: Cannot mix BigInt and other types, use explicit conversions
 
 // console.log(huge * BigInt(num));
 
 //Exceptions
-console.log(20n > 15); // true
-console.log(20n === 20); //false
-console.log(typeof 20n); //bigint
-console.log(20n == '20'); // true
+// console.log(20n > 15); // true
+// console.log(20n === 20); //false
+// console.log(typeof 20n); //bigint
+// console.log(20n == '20'); // true
 
-console.log(huge + ' is really big!!!! ' );
+// console.log(huge + ' is really big!!!! ' );
 
 // Divisions
-console.log(10n / 3n); // Give a closest bigint 3n
-console.log(10 / 3);
+// console.log(10n / 3n); // Give a closest bigint 3n
+// console.log(10 / 3);
+
+// -------------------- Creating Dates ---------------
+
+// Create a date
+/* const now = new Date()
+console.log(now);
+
+console.log(new Date('Sep 15 2022 16:49:09'));
+console.log(new Date('December 24, 2015'));
+console.log(new Date(account1.movementsDates[0]));
+
+console.log(new Date(2037, 10, 33));
+console.log(new Date(2037, 10, 19, 15, 23, 5));
+
+console.log(new Date(0));
+console.log(new Date(3 * 24 *60 * 60 *1000)); */
+
+// 3 * 24 *60 * 60 *1000  => Timestamp
+
+// Working with Dates
+
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear()); // Always use getFullYear() ****
+console.log(future.getMonth()); // Months are zero based 
+console.log(future.getDate()); // Day of the months
+console.log(future.getDay()); // Day of the week -> 0:SUNDAY 4:THURSDAY
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString());
+console.log(future.getTime()); //timestamp
+
+console.log(new Date(2142246180000));
+
+console.log(Date.now()); // Şu anın timestamp'ını oluşturduk
+console.log(new Date(1663254743504)); 
+
+future.setFullYear(2040);
+console.log(future);
 
 
 
