@@ -255,7 +255,7 @@ btnSort.addEventListener('click', function (e) {
 
 //Numbers
 
-console.log(23 === 23.0);
+/* console.log(23 === 23.0);
 
 //Base 10 -> 0 to 9; 1/10 => 0.1 3/10 = 3.3333
 // Binary base 2- 0,1
@@ -332,7 +332,7 @@ console.log(Math.floor(-23.3));
 //Rounding Decimals
 console.log((2.7).toFixed(0));
 console.log((2.7).toFixed(3));
-console.log(+(2.345).toFixed(2));
+console.log(+(2.345).toFixed(2)); */
 
 // Description to this 
 // const randomInt = (min, max) => Math.floor(Math.random() * (max-min) + 1) +min;
@@ -367,6 +367,33 @@ Thanks
 */
 
 //MDN DOCUMENT: https://stackoverflow.com/questions/62981108/how-does-math-floormath-random-max-min-1-min-work-in-javascript
+
+
+// --------------------The Remainder Operator ---------------
+
+console.log(5 % 2);
+console.log(5 /2); // 5 = 2*2 +1;
+console.log(8 % 3);
+console.log(8 / 3);
+console.log(6 % 2);
+console.log(6 / 2);
+
+const isEven = (n) => n % 2 === 0;
+console.log(isEven(8));
+console.log(isEven(23));
+console.log(isEven(28));
+
+
+
+labelBalance.addEventListener('click', function(){
+[...document.querySelectorAll('.movements__row')].forEach(function(row,i){
+  if(i % 2 === 0) row.style.backgroundColor = 'yellow'
+  if(i % 3 ===0 ) row.style.backgroundColor = 'blue'
+}
+)})
+// hearing Nth time -> Good feature -> remainder
+
+
 
 
 
