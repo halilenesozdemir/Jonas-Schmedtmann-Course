@@ -49,7 +49,27 @@ const account2 = {
   locale: 'en-US',
 };
 
-const accounts = [account1, account2];
+const account3 = {
+  owner: 'Serpil Ozdemir',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 3333,
+
+  movementsDates: [
+    '2019-11-01T13:15:33.035Z',
+    '2019-11-30T09:48:16.867Z',
+    '2019-12-25T06:04:23.907Z',
+    '2020-01-25T14:18:46.235Z',
+    '2020-02-05T16:33:06.386Z',
+    '2020-04-10T14:43:26.374Z',
+    '2020-06-25T18:49:59.371Z',
+    '2020-07-26T12:01:20.894Z',
+  ],
+  currency: 'USD',
+  locale: 'tr-TR',
+};
+
+const accounts = [account1, account2, account3];
 
 /////////////////////////////////////////////////
 // Elements
@@ -297,14 +317,16 @@ btnLoan.addEventListener('click', function (e) {
   const amount = Math.floor(inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(function () {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    // Add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 2500);
   }
   inputLoanAmount.value = '';
 });
@@ -588,19 +610,58 @@ console.log(future); */
 // console.log(days1);
 
 // -------------------- Internationalizing Numbers (Intl) ---------------
-const num = 3884764.23;
+// const num = 3884764.23;
 
-const options = {
-  style: 'currency',
-  unit: 'celsius',
-  currency: 'EUR',
-  useGrouping: false,
-};
+// const options = {
+//   style: 'currency',
+//   unit: 'celsius',
+//   currency: 'EUR',
+//   useGrouping: false,
+// };
 
-console.log('TR:', new Intl.NumberFormat('tr-TR', options).format(num));
-console.log('US:', new Intl.NumberFormat('en-US', options).format(num));
-console.log('Syria:', new Intl.NumberFormat('ar-SY', options).format(num));
-console.log(
-  navigator.language,
-  new Intl.NumberFormat(navigator.language, options).format(num)
+// console.log('TR:', new Intl.NumberFormat('tr-TR', options).format(num));
+// console.log('US:', new Intl.NumberFormat('en-US', options).format(num));
+// console.log('Syria:', new Intl.NumberFormat('ar-SY', options).format(num));
+// console.log(
+//   navigator.language,
+//   new Intl.NumberFormat(navigator.language, options).format(num)
+// );
+
+//  ---------------------setTimeout and setInterval ---------------
+
+//setTimeout
+const ingredients = ['olives', ''];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) =>
+    console.log(`Here is your pizza with  ${ing1} and ${ing2} 🍕`),
+  3000,
+  ...ingredients
 );
+console.log('Waiting...');
+
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+//setInterval
+// setInterval(function () {
+//   const now = new Date();
+//   const hours = now.getHours();
+//   const minutes = now.getMinutes();
+//   const seconds = now.getSeconds();
+
+//   console.log(`${hours}:${minutes}:${seconds}`);
+// }, 1000);
+
+// setInterval(
+//   () =>
+//     console.log(
+//       Intl.DateTimeFormat(navigator.locale, { timeStyle: 'long' }).format(
+//         new Date()
+//       )
+//     ),
+//   1000
+// );
+
+setInterval(() => {
+  const now = new Date();
+  console.log(now.toLocaleTimeString());
+}, 1000);
