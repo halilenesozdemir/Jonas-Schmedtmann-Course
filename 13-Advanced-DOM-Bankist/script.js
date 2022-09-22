@@ -147,15 +147,55 @@ btnScrollTo.addEventListener('click', function (e) {
 
 const h1 = document.querySelector('h1');
 
-const alertH1 = function (e) {
-  alert('addEventListener: Great! You are reading the heading :)');
-};
-h1.addEventListener('mouseenter', alertH1);
+// const alertH1 = function (e) {
+//   alert('addEventListener: Great! You are reading the heading :)');
+// };
+// h1.addEventListener('mouseenter', alertH1);
 
-setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+// setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 
 //Don't use...
 
 // h1.onmouseenter = function (e) {
 //   alert('addEventListener: Great! You are reading the heading :)');
 // };
+
+// Coming from comments and good tip..
+
+// h1.addEventListener(
+//   'click',
+//   function () {
+//     console.log('Only once');
+//   },
+//   { once: true }
+// );
+
+//----------------------- Event Propagation in Practice---------------
+
+//rgb(255,255,255);
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () => `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+console.log(randomColor());
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('LINK', e.target, e.currentTarget);
+  console.log(e.currentTarget === this);
+
+  // STOP PROPAGATION
+  // e.stopPropagation();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('container', e.target, e.currentTarget);
+});
+
+document.querySelector('.nav').addEventListener(
+  'click',
+  function (e) {
+    this.style.backgroundColor = randomColor();
+    console.log('nav', e.target, e.currentTarget);
+  },
+  false // see the capturing phase, by default third parameter is false.
+);
