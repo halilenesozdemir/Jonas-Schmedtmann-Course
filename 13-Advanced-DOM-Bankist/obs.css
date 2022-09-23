@@ -1,0 +1,12 @@
+/* #container{
+  height: 300px;
+  overflow: auto;
+  background-color: rgb(189, 231, 231);
+  border: 1px solid #ddd;
+} */
+
+.image{
+  width: 400px;
+  height:400px;
+  background-color: orangered;
+}
