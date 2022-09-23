@@ -69,16 +69,16 @@ btnScrollTo.addEventListener('click', function (e) {
 // 1. Add event listener to common parent element
 // 2.Determine what element originated the event
 
-document.querySelector('.nav__links').addEventListener('click', function (e) {
-  e.preventDefault();
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   e.preventDefault();
 
-  // Matching strategy
-  if (e.target.classList.contains('nav__link')) {
-    const id = e.target.getAttribute('href');
-    console.log(id);
-    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-  }
-});
+//   // Matching strategy
+//   if (e.target.classList.contains('nav__link')) {
+//     const id = e.target.getAttribute('href');
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   }
+// });
 
 // Selecting Elements
 // Generally we use dqs, dqsa with nodelist...
@@ -251,7 +251,9 @@ console.log(link.getAttribute('href'));
 //   false // see the capturing phase, by default third parameter is false.
 // );
 
-const h1 = document.querySelector('h1');
+//------------------------DOM TRAVERSING ------------------------
+
+/* const h1 = document.querySelector('h1');
 
 // Going downwards: child
 console.log(h1.querySelectorAll('.highlight'));
@@ -279,4 +281,42 @@ console.log(h1.parentElement.children); // All of them siblings...
 //A bit of fun :)
 // [...h1.parentElement.children].forEach(function (el) {
 //   if (el !== h1) el.style.transform = 'scale(1)';
-// });
+// }); */
+
+//Tabbed Component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+// Bad Practise
+
+// tabs.forEach((t) => t.addEventListener('click', () => console.log('TAB')));
+
+
+// Event delegation
+
+tabsContainer.addEventListener('click', function(e){
+  const clicked = e.target.closest('.operations__tab')
+  console.log(clicked);
+
+// Guard Clause
+  if(!clicked) return;
+  // Alternative
+  // clicked?.classList.add('operations__tab--active');
+
+
+  // Remove active classes
+  tabs.forEach(t => t.classList.remove('operations__tab--active'))
+
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'))
+
+  //Activate Tab
+    clicked.classList.add('operations__tab--active')
+
+
+  //Activate content area
+  // console.log(clicked.dataset.tab);
+document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active'); 
+
+})
+
