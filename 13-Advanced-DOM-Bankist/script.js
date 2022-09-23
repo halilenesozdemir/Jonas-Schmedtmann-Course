@@ -8,6 +8,7 @@ const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
+const nav = document.querySelector('nav');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -316,7 +317,49 @@ tabsContainer.addEventListener('click', function(e){
 
   //Activate content area
   // console.log(clicked.dataset.tab);
-document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active'); 
+document.querySelector(`.operations__content--${clicked.dataset.tab}`)
+.classList.add('operations__content--active'); 
+
 
 })
+
+// Menu Fade Animation
+// Mouseenter event does not bubble... That's why we use mouseover just like similar mouseenter function.
+// Opp => mouseover = mouseout, mouseenter => mouseleave
+
+const handleHover = function(e){
+  // console.log(this,e.currentTarget);
+if(e.target.classList.contains('nav__link')){
+  const link = e.target;
+
+  const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+  const logo = link.closest('.nav').querySelector('img');
+
+  siblings.forEach(el => {
+    if(el !== link) el.style.opacity = this;
+  });
+  logo.style.opacity = this;
+}
+
+}
+
+// nav.addEventListener('mouseover', function(e){
+//   handleHover(e, 0.5)
+// })
+
+// PASSING IN 'ARGUMENT' into handler
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+
+// Nice tip
+//   The first method is more specific. 
+// It will select nav_links in the nav that contains this exact link.
+// The second one could select whatever element with a "nav" class.
+
+// const siblings = link.closest('.nav').querySelectorAll('.nav__link')
+//   instead of const siblings = nav.querySelectorAll('.nav__link').
+
+nav.addEventListener('mouseout', handleHover.bind(1)
+)
+
+
 
