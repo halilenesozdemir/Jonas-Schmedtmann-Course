@@ -293,7 +293,6 @@ const tabsContent = document.querySelectorAll('.operations__content');
 
 // tabs.forEach((t) => t.addEventListener('click', () => console.log('TAB')));
 
-
 // Event delegation
 
 // tabsContainer.addEventListener('click', function(e){
@@ -301,25 +300,22 @@ const tabsContent = document.querySelectorAll('.operations__content');
 //   console.log(clicked);
 
 // Guard Clause
-  // if(!clicked) return;
-  // Alternative
-  // clicked?.classList.add('operations__tab--active');
+// if(!clicked) return;
+// Alternative
+// clicked?.classList.add('operations__tab--active');
 
+// Remove active classes
+// tabs.forEach(t => t.classList.remove('operations__tab--active'))
 
-  // Remove active classes
-  // tabs.forEach(t => t.classList.remove('operations__tab--active'))
+// tabsContent.forEach(c => c.classList.remove('operations__content--active'))
 
-  // tabsContent.forEach(c => c.classList.remove('operations__content--active'))
+//Activate Tab
+// clicked.classList.add('operations__tab--active')
 
-  //Activate Tab
-    // clicked.classList.add('operations__tab--active')
-
-
-  //Activate content area
-  // console.log(clicked.dataset.tab);
+//Activate content area
+// console.log(clicked.dataset.tab);
 // document.querySelector(`.operations__content--${clicked.dataset.tab}`)
-// .classList.add('operations__content--active'); 
-
+// .classList.add('operations__content--active');
 
 // })
 
@@ -351,7 +347,7 @@ const tabsContent = document.querySelectorAll('.operations__content');
 // nav.addEventListener('mouseover', handleHover.bind(0.5));
 
 // Nice tip
-//   The first method is more specific. 
+//   The first method is more specific.
 // It will select nav_links in the nav that contains this exact link.
 // The second one could select whatever element with a "nav" class.
 
@@ -364,15 +360,12 @@ const tabsContent = document.querySelectorAll('.operations__content');
 // const initialCoords = section1.getBoundingClientRect();
 // console.log(initialCoords);
 
-
-
 // window.addEventListener('scroll',function(){
 //   console.log(window.scrollY);
 
 //   if(window.scrollY > initialCoords.top) nav.classList.add('sticky');
 //  else nav.classList.remove('sticky');
 // })
-
 
 // Sticky Navigation : Intersection Observer API
 
@@ -388,55 +381,73 @@ const tabsContent = document.querySelectorAll('.operations__content');
 
 // }
 
-
 // const observer = new IntersectionObserver(obsCallback,obsOptions);
 // observer.observe(section1)
 
 const header = document.querySelector('.header');
 const navHeight = nav.getBoundingClientRect().height;
-console.log(navHeight);
+// console.log(navHeight);
 
-const stickyNav = function(entries){
+const stickyNav = function (entries) {
   const [entry] = entries;
   console.log(entry);
 
-  if(!entry.isIntersecting ) nav.classList.add('sticky');
+  if (!entry.isIntersecting) nav.classList.add('sticky');
   else nav.classList.remove('sticky');
-}
+};
 
 const headerObserver = new IntersectionObserver(stickyNav, {
-  root:null,
-  threshold:0,
+  root: null,
+  threshold: 0,
   // rootMargin: '100px'
-  rootMargin: `-${navHeight}px`
+  rootMargin: `-${navHeight}px`,
 });
-headerObserver.observe(header)
-
+headerObserver.observe(header);
 
 // Reveal sections
-const allSections = document.querySelectorAll('.section')
+const allSections = document.querySelectorAll('.section');
 
-const revealSection =function(entries,observer){
+const revealSection = function (entries, observer) {
   const [entry] = entries;
   console.log(entry);
-  if(!entry.isIntersecting) return;
-  entry.target.classList.remove('section--hidden')
-  observer.unobserve(entry.target)
-}
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+};
 
 const sectionObserver = new IntersectionObserver(revealSection, {
-  root:null,
-  threshold: 0.15
-})
-allSections.forEach(function(section){
+  root: null,
+  threshold: 0.15,
+});
+allSections.forEach(function (section) {
   sectionObserver.observe(section);
   section.classList.add('section--hidden');
+});
 
-})
+// Lazy Loading Images
+const imgTargets = document.querySelectorAll('img[data-src]');
+// console.log(imgTargets);
 
+const loadImg = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
 
+  if (!entry.isIntersecting) return;
 
+  //Replace src with data-src
+  entry.target.src = entry.target.dataset.src;
 
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
+  });
 
+  observer.unobserve(entry.target);
+};
 
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0,
+  rootMargin: '200px',
+});
 
+imgTargets.forEach((img) => imgObserver.observe(img));
